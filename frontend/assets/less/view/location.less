@@ -1,13 +1,32 @@
 #location {
-	text-align: center;
-	
-	h1 {
-		font-size: 60px;
-	}
+	#locationWrap {
+		height: 100%;
+		color:white;
 
-	#today {
-		h2 {
-			font-size: 100px;
+		&.typeSunny {
+			background:orange;
+		}
+		&.typeRain {
+			background:blue;
+		}
+		&.typePartlycloudy {
+			background:gray;
+		}
+
+
+		text-align: center;
+		h1 {
+			font-size: 60px;
+		}
+
+		#today {
+			h2 {
+				font-size: 120px;
+				font-weight: 400;
+			}
+			h3 {
+				font-size: 80px;
+			}
 		}
 	}
 }

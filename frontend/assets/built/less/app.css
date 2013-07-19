@@ -13,12 +13,27 @@ body {
 a {
   color: #ff0000;
 }
-#location {
+#location #locationWrap {
+  height: 100%;
+  color: white;
   text-align: center;
 }
-#location h1 {
+#location #locationWrap.typeSunny {
+  background: orange;
+}
+#location #locationWrap.typeRain {
+  background: blue;
+}
+#location #locationWrap.typePartlycloudy {
+  background: gray;
+}
+#location #locationWrap h1 {
   font-size: 60px;
 }
-#location #today h2 {
-  font-size: 100px;
+#location #locationWrap #today h2 {
+  font-size: 120px;
+  font-weight: 400;
+}
+#location #locationWrap #today h3 {
+  font-size: 80px;
 }
