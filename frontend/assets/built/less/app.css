@@ -1,9 +1,24 @@
 @import "../../font/icon/style.css";
 
 @import "../../vendor/reset.css";
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
 body {
   background-color: #d3d3d3;
 }
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 200;
+}
 a {
   color: #ff0000;
+}
+#location {
+  text-align: center;
+}
+#location h1 {
+  font-size: 60px;
+}
+#location #today h2 {
+  font-size: 100px;
 }
