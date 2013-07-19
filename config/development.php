@@ -1,3 +1,3 @@
 <?
 
-include ('../fakeData/item.php');
+include ('../fakeData/locationdata.php');

@@ -3,7 +3,7 @@
 function fakeDay($addDays) {
 	global $config;
 
-	$ts = strtotime(sprintf('+ %s days', $addDays));
+	$ts = strtotime(sprintf('+ %s days 0:00', $addDays));
 	return array(
 		'day' => $ts,
 		'type' => $config['weatherTypes'][array_rand($config['weatherTypes'])],
