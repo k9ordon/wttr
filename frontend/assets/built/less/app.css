@@ -1,0 +1,9 @@
+@import "../../font/icon/style.css";
+
+@import "../../vendor/reset.css";
+body {
+  background-color: #d3d3d3;
+}
+a {
+  color: #ff0000;
+}

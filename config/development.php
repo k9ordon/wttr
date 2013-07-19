@@ -1,0 +1,3 @@
+<?
+
+include ('../fakeData/item.php');
