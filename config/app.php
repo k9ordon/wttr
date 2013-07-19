@@ -5,5 +5,9 @@ $config['contentBase'] = $config['base'];
 
 
 $config['weatherTypes'] = array(
-	'clear', 'mostly sunny', 'sunny', 'partly cloudy', 'rain'
+	//'clear' => array('name' => 'Wolkenlos'), 
+	//'mostlySunny', 
+	'sunny' => array('name' => 'Sonnig', 'class' => 'sunny'), 
+	'partlyCloudy' => array('name' => 'Leicht Bewölkt', 'class' => 'partlycloudy'), 
+	'rain' => array('name' => 'Regen', 'class' => 'rain')
 );
