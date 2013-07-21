@@ -23,35 +23,25 @@
 	}
 
 	#locationWrap {
-
-		height: 100%;
-		width: 100%;
+		position: relative;
+		z-index: 120;
+		width:640px;
 		color:white;
 
+		margin:0 auto 0;
+		padding:150px 0;
+
+		text-shadow: 0px 1px 2px rgba(0,0,0,0.3), 0px 1px 5px rgba(0,0,0,0.2);
 		//text-shadow: 0px 1px 2px rgba(0,0,0,0.8), 0px 1px 10px rgba(0,0,0,0.3);
 
-		text-align: center;
 		h1 {
 			font-size: 60px;
+			display: none;
 		}
 
 		.dayCard {
-			//border: 1px solid red;
-			//border-width:0 0 0 0;
-
 			padding:0px 0 0px;
 			text-align: left;
-
-			text-shadow: 0px 1px 2px rgba(0,0,0,0.3), 0px 1px 5px rgba(0,0,0,0.2);
-
-			position: fixed;
-			z-index: 120;
-			width:640px;
-			height: 300px;
-			left:50%;
-			top:50%;
-			margin-left:-320px;
-			margin-top:-150px;
 
 			h2 {
 				font-size: 120px;
@@ -63,6 +53,12 @@
 				line-height: 80px;
 			}
 
+			h4 {
+				font-size: 24px;
+				line-height: 35px;
+				margin:10px 0 10px;
+			}
+
 			.dayChart {
 				position: absolute;
 				top:-197px;
@@ -72,7 +68,7 @@
 				text-align: center;
 
 				border: 0px solid rgba(255,255,255,0.5);
-				border-width:2px 0 0 0;
+				border-width:1px 0 0 0;
 				margin: 0 auto;
 				white-space: nowrap;
 
@@ -115,20 +111,19 @@
 		}
 
 		#forecast {
-			position: fixed;
-			z-index: 150;
-			bottom:0;
-			width:100%;
-			border: 0px solid rgba(255,255,255,0.8);
-			border-width:1px 0 0px 0;
-			margin: 0 auto;
-			white-space: nowrap;
-			background: rgba(0,0,0,0.5);
+			h3 {
+				margin:40px 0 20px;
+				font-size: 24px;
+				line-height: 35px;
+			}
 
 			.day {
-				display: inline-block;
-				border: 0px solid rgba(255,255,255,0.8);
-				border-width:0 1px 0 0;
+				text-align: center;
+
+				.clearfix();
+				display: block;
+				border: 0px solid rgba(255,255,255,0.5);
+				border-width:0 0px 1px 0;
 
 				padding:10px 20px;
 				font-size: 18px;
@@ -139,28 +134,36 @@
 				};
 
 				&.active {
-					background: white;
-					color:black;
+					background: rgba(255,255,255,0.1);
+					//color:black;
+				}
+
+				p {
+					display: inline-block;
+					float:left;
+					line-height: 32px;
 				}
 
 				.icon {
-					display: inline-block;
+					span {
+						display: inline-block;
+						height: 32px;
+					}
 					font-size: 34px;
-					line-height: 32px;
-					margin:5px 0 15px;
+					width:15%;
 				}
 
 				.time {
-					border: 0px solid rgba(255,255,255,0.5);
-					border-width:0 0 1px 0;
+					width:20%;
 					font-weight: 400;
 				}
 
 				.temp {
-					display: inline;
+					width:20%;
 				}
+
 				.rain {
-					display: inline;
+					width:20%;
 				}
 			}
 		}
