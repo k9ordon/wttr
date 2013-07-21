@@ -60,6 +60,12 @@ nav#main-nav #location {
 #location #locationBackground.typePartlycloudy {
   background: #C2CBCE;
 }
+#location #ad {
+  position: fixed;
+  z-index: 100;
+  right: 10px;
+  top: 100px;
+}
 #location #locationWrap {
   position: relative;
   z-index: 120;

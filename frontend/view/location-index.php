@@ -45,4 +45,8 @@
 	<a href="http://www.flickr.com/photos/friesenecker/8710831494/" title="Laufrunde durch Linz von Daniel Friesenecker bei Flickr">c by</a><? /**/?>
 </div>
 
+<div id="ad">
+	<img src="http://placekitten.com/120/600" />
+</div>
+
 <? include "_foot.php" ?>
