@@ -9,8 +9,6 @@ class Controller_Location extends Controller {
 
 		$this->getLocationData();
 
-		var_dump($this->router->urlParts);
-
 		if($this->router->urlParts[2]) {
 			$this->location['name'] = $this->router->urlParts[2];
 		}
