@@ -30,10 +30,53 @@ a {
 #location #locationWrap h1 {
   font-size: 60px;
 }
+#location #locationWrap #today {
+  width: 640px;
+  border: 0px solid red;
+  border-width: 0 0 0 0;
+  margin: 0 auto;
+  padding: 60px 0 20px;
+  text-align: left;
+}
 #location #locationWrap #today h2 {
   font-size: 120px;
+  line-height: 100px;
   font-weight: 400;
 }
 #location #locationWrap #today h3 {
-  font-size: 80px;
+  font-size: 60px;
+  line-height: 80px;
+}
+#location #locationWrap .detail {
+  width: 640px;
+  border: 0px solid white;
+  border-width: 1px 0 1px 0;
+  margin: 0 auto;
+}
+#location #locationWrap .detail .hour {
+  display: inline-block;
+  border: 0px solid white;
+  border-width: 0 1px 0 0;
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 20px;
+}
+#location #locationWrap .detail .hour:last-child {
+  border-width: 0;
+}
+#location #locationWrap .detail .hour .icon {
+  display: inline-block;
+  font-size: 34px;
+  line-height: 32px;
+  margin: 5px 0 15px;
+}
+#location #locationWrap .detail .hour .time {
+  border: 0px solid white;
+  border-width: 0 0 1px 0;
+}
+#location #locationWrap .detail .hour .temp {
+  font-weight: 400;
+}
+#location #locationWrap .detail .hour .rain {
+  display: none;
 }

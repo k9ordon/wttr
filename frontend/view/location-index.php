@@ -1,7 +1,7 @@
 <? include "_head.php" ?>
 
 <div id="locationWrap" class="type<?=ucfirst($this->location['today']['type']['class'])?>">
-<h1>Wetter <?=$this->location['name']?> <?=$this->location['name']?></h1>
+<h1>Wetter <?=$this->location['name']?></h1>
 
 <div id="today">
 	<h2><?=$this->location['today']['temp'] ?>°C</h2>
@@ -11,9 +11,10 @@
 <div class="detail">
 	<? foreach($this->location['today']['detail'] as $detail) : ?>
 	<div class="hour">
-		<p><?=date('H:i', $detail['hour'])?></p>
-		<p><?=$detail['temp']?>°C</p>
-		<p><?=$detail['rain']?>%</p>
+		<p class="icon"><span class="<?=$detail['icon']?>"></span></p>
+		<p class="time"><?=date('H:i', $detail['hour'])?></p>
+		<p class="temp"><?=$detail['temp']?>°C</p>
+		<p class="rain"><?=$detail['rain']?>%</p>
 	</div>
 	<? endforeach; ?>
 </div>
