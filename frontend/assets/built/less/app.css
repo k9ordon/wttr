@@ -3,6 +3,11 @@
 @import "../../vendor/reset.css";
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body {
   background-color: #d3d3d3;
 }
@@ -17,59 +22,64 @@ a {
   position: fixed;
   z-index: 50;
   top: 0;
+  height: 100%;
+  width: 100%;
 }
 #location #locationBackground img {
   width: 100%;
 }
+#location #locationBackground.typeSunny {
+  background: #F8C48B;
+}
+#location #locationBackground.typeRain {
+  background: #81A8B8;
+}
+#location #locationBackground.typePartlycloudy {
+  background: #C2CBCE;
+}
 #location #locationWrap {
-  position: fixed;
-  z-index: 100;
   height: 100%;
   width: 100%;
   color: white;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8), 0px 1px 10px rgba(0, 0, 0, 0.3);
-  /*
-		&.typeSunny {
-			background:#F8C48B;
-		}
-		&.typeRain {
-			background:#81A8B8;
-		}
-		&.typePartlycloudy {
-			background:#C2CBCE;
-		}
-*/
-
   text-align: center;
 }
 #location #locationWrap h1 {
   font-size: 60px;
 }
-#location #locationWrap #today {
-  width: 640px;
-  border: 0px solid red;
-  border-width: 0 0 0 0;
-  margin: 0 auto;
-  padding: 60px 0 20px;
+#location #locationWrap .dayCard {
+  padding: 0px 0 0px;
   text-align: left;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  z-index: 120;
+  width: 640px;
+  height: 300px;
+  left: 50%;
+  top: 50%;
+  margin-left: -320px;
+  margin-top: -150px;
 }
-#location #locationWrap #today h2 {
+#location #locationWrap .dayCard h2 {
   font-size: 120px;
   line-height: 100px;
   font-weight: 400;
 }
-#location #locationWrap #today h3 {
+#location #locationWrap .dayCard h3 {
   font-size: 60px;
   line-height: 80px;
 }
-#location #locationWrap .detail {
-  width: 640px;
-  border: 0px solid rgba(255, 255, 255, 0.5);
-  border-width: 3px 0 3px 0;
-  margin: 0 auto;
+#location #locationWrap .dayCard .dayChart {
+  position: absolute;
+  top: -197px;
 }
-#location #locationWrap .detail .hour {
+#location #locationWrap .dayCard .detail {
+  text-align: center;
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 2px 0 0 0;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+#location #locationWrap .dayCard .detail .hour {
   display: inline-block;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 1px 0 0;
@@ -77,22 +87,65 @@ a {
   font-size: 18px;
   line-height: 20px;
 }
-#location #locationWrap .detail .hour:last-child {
+#location #locationWrap .dayCard .detail .hour:last-child {
   border-width: 0;
 }
-#location #locationWrap .detail .hour .icon {
+#location #locationWrap .dayCard .detail .hour .icon {
+  display: inline-block;
+  font-size: 48px;
+  line-height: 32px;
+  margin: 5px 0 15px;
+}
+#location #locationWrap .dayCard .detail .hour .time {
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 0 0 1px 0;
+}
+#location #locationWrap .dayCard .detail .hour .temp {
+  font-weight: 400;
+}
+#location #locationWrap .dayCard .detail .hour .rain {
+  display: none;
+}
+#location #locationWrap #forecast {
+  position: fixed;
+  z-index: 150;
+  bottom: 0;
+  width: 100%;
+  border: 0px solid rgba(255, 255, 255, 0.8);
+  border-width: 1px 0 0px 0;
+  margin: 0 auto;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.5);
+}
+#location #locationWrap #forecast .day {
+  display: inline-block;
+  border: 0px solid rgba(255, 255, 255, 0.8);
+  border-width: 0 1px 0 0;
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 20px;
+}
+#location #locationWrap #forecast .day:last-child {
+  border-width: 0;
+}
+#location #locationWrap #forecast .day.active {
+  background: white;
+  color: black;
+}
+#location #locationWrap #forecast .day .icon {
   display: inline-block;
   font-size: 34px;
   line-height: 32px;
   margin: 5px 0 15px;
 }
-#location #locationWrap .detail .hour .time {
+#location #locationWrap #forecast .day .time {
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 1px 0;
-}
-#location #locationWrap .detail .hour .temp {
   font-weight: 400;
 }
-#location #locationWrap .detail .hour .rain {
-  display: none;
+#location #locationWrap #forecast .day .temp {
+  display: inline;
+}
+#location #locationWrap #forecast .day .rain {
+  display: inline;
 }
