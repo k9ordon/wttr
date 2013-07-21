@@ -16,9 +16,11 @@ function fakeDay($addDays) {
 }
 
 function fakeDayHours($dayTimestamp) {
+	$icons = array('icon-sun', 'icon-moon', 'icon-cloudy', 'icon-cloud', 'icon-rainy', 'icon-lightning');
 	$item = array();
-	for($h = 0; $h <= 23; $h++) {
+	for($h = 0; $h <= 23; $h=$h+3) {
 		$item[] = array(
+			'icon' => $icons[array_rand($icons)],
 			'hour' => $dayTimestamp + ($h * 60 * 60),
 			'temp' => rand(10, 30),
 			'rain' => rand(0,20)
