@@ -12,13 +12,13 @@
 		}
 
 		&.typeSunny {
-			background:#F8C48B;
+			background-color:#F8C48B;
 		}
 		&.typeRain {
-			background:#81A8B8;
+			background-color:#81A8B8;
 		}
 		&.typePartlycloudy {
-			background:#C2CBCE;
+			background-color:#C2CBCE;
 		}
 	}
 
@@ -35,25 +35,36 @@
 		width:640px;
 		color:white;
 
-		margin:0 auto 0;
-		padding:150px 0;
+		margin:120px auto 0;
+		padding:0 0;
 
-		text-shadow: 0px 1px 2px rgba(0,0,0,0.3), 0px 1px 5px rgba(0,0,0,0.2);
+		text-shadow: 0px 1px 2px rgba(0,0,0,0.7), 0px 1px 5px rgba(0,0,0,0.2);
+		//text-shadow: 0px 1px 2px rgba(0,0,0,0.9), 0px 1px 10px rgba(255,255,255,1);
+
 		//text-shadow: 0px 1px 2px rgba(0,0,0,0.8), 0px 1px 10px rgba(0,0,0,0.3);
 
 		h1 {
 			font-size: 60px;
-			display: none;
+			display: none;;
 		}
 
 		.dayCard {
 			padding:0px 0 0px;
 			text-align: left;
+			position: relative;
+			z-index: 120;
+
+			h2, h3, h4 {
+				position: relative;
+				z-index: 130;
+			}
 
 			h2 {
-				font-size: 120px;
-				line-height: 100px;
+				font-size: 130px;
+				line-height: 130px;
 				font-weight: 400;
+				float: left;
+				margin:0 20px;
 			}
 			h3 {
 				font-size: 60px;
@@ -63,12 +74,15 @@
 			h4 {
 				font-size: 24px;
 				line-height: 35px;
-				margin:10px 0 10px;
+				margin:0 0 20px;
 			}
 
 			.dayChart {
-				position: absolute;
-				top:-197px;
+				border: 0px solid rgba(255,255,255,0.5);
+				border-width:1px 0 0 0;
+				position: relative;
+				//top:-65px;
+				z-index: 10;
 			}
 			
 			.detail { 
@@ -103,6 +117,7 @@
 					.time {
 						border: 0px solid rgba(255,255,255,0.5);
 						border-width:0 0 1px 0;
+						font-weight: 400;
 					}
 
 					.temp {
@@ -118,8 +133,10 @@
 		}
 
 		#forecast {
+			position: relative;
+			z-index: 120;
 			h3 {
-				margin:40px 0 20px;
+				margin:40px 20px 10px;
 				font-size: 24px;
 				line-height: 35px;
 			}
@@ -135,6 +152,7 @@
 				padding:10px 20px;
 				font-size: 18px;
 				line-height: 20px;
+				font-weight: 400;
 				
 				&:last-child {
 					border-width:0;
@@ -162,7 +180,6 @@
 
 				.time {
 					width:20%;
-					font-weight: 400;
 				}
 
 				.temp {
@@ -173,6 +190,50 @@
 					width:20%;
 				}
 			}
+		}
+	}
+
+	&.local {
+		#locationBackground {
+			background-image: url("http://farm9.staticflickr.com/8278/8710831494_63c5940287_o.jpg");
+			background-position: center top;
+			background-repeat: no-repeat;
+			background-size: 1400px;
+		}
+		
+		#locationWrap {
+			overflow: hidden;
+			text-shadow: 0px 1px 2px rgba(0,0,0,0.9), 0px 1px 10px rgba(255,255,255,1);
+
+			&:after {
+				content:'';
+				display: block;
+				position: absolute;
+				z-index: 110;
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+				background-image: url("http://farm9.staticflickr.com/8278/8710831494_63c5940287_o.jpg");
+				background-position: center -120px;
+				background-repeat: no-repeat;
+				background-size: 1400px;
+				//background-color:rgba(255,255,255,0.8);
+				-webkit-filter: blur(10px);
+				//opacity: 0.8;
+			}
+			/*&:before {
+				content:'';
+				display: block;
+				position: absolute;
+				z-index: 109;
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+				background-color:white;
+				-webkit-filter: blur(5px);
+			}*/
 		}
 	}
 }

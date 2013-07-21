@@ -52,13 +52,13 @@ nav#main-nav #location {
   width: 100%;
 }
 #location #locationBackground.typeSunny {
-  background: #F8C48B;
+  background-color: #F8C48B;
 }
 #location #locationBackground.typeRain {
-  background: #81A8B8;
+  background-color: #81A8B8;
 }
 #location #locationBackground.typePartlycloudy {
-  background: #C2CBCE;
+  background-color: #C2CBCE;
 }
 #location #ad {
   position: fixed;
@@ -71,9 +71,9 @@ nav#main-nav #location {
   z-index: 120;
   width: 640px;
   color: white;
-  margin: 0 auto 0;
-  padding: 150px 0;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 5px rgba(0, 0, 0, 0.2);
+  margin: 120px auto 0;
+  padding: 0 0;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.7), 0px 1px 5px rgba(0, 0, 0, 0.2);
 }
 #location #locationWrap h1 {
   font-size: 60px;
@@ -82,11 +82,21 @@ nav#main-nav #location {
 #location #locationWrap .dayCard {
   padding: 0px 0 0px;
   text-align: left;
+  position: relative;
+  z-index: 120;
+}
+#location #locationWrap .dayCard h2,
+#location #locationWrap .dayCard h3,
+#location #locationWrap .dayCard h4 {
+  position: relative;
+  z-index: 130;
 }
 #location #locationWrap .dayCard h2 {
-  font-size: 120px;
-  line-height: 100px;
+  font-size: 130px;
+  line-height: 130px;
   font-weight: 400;
+  float: left;
+  margin: 0 20px;
 }
 #location #locationWrap .dayCard h3 {
   font-size: 60px;
@@ -95,11 +105,13 @@ nav#main-nav #location {
 #location #locationWrap .dayCard h4 {
   font-size: 24px;
   line-height: 35px;
-  margin: 10px 0 10px;
+  margin: 0 0 20px;
 }
 #location #locationWrap .dayCard .dayChart {
-  position: absolute;
-  top: -197px;
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 1px 0 0 0;
+  position: relative;
+  z-index: 10;
 }
 #location #locationWrap .dayCard .detail {
   text-align: center;
@@ -128,6 +140,7 @@ nav#main-nav #location {
 #location #locationWrap .dayCard .detail .hour .time {
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 1px 0;
+  font-weight: 400;
 }
 #location #locationWrap .dayCard .detail .hour .temp {
   font-weight: 400;
@@ -135,8 +148,12 @@ nav#main-nav #location {
 #location #locationWrap .dayCard .detail .hour .rain {
   display: none;
 }
+#location #locationWrap #forecast {
+  position: relative;
+  z-index: 120;
+}
 #location #locationWrap #forecast h3 {
-  margin: 40px 0 20px;
+  margin: 40px 20px 10px;
   font-size: 24px;
   line-height: 35px;
 }
@@ -149,6 +166,7 @@ nav#main-nav #location {
   padding: 10px 20px;
   font-size: 18px;
   line-height: 20px;
+  font-weight: 400;
 }
 #location #locationWrap #forecast .day:before {
   content: '';
@@ -180,11 +198,48 @@ nav#main-nav #location {
 }
 #location #locationWrap #forecast .day .time {
   width: 20%;
-  font-weight: 400;
 }
 #location #locationWrap #forecast .day .temp {
   width: 20%;
 }
 #location #locationWrap #forecast .day .rain {
   width: 20%;
+}
+#location.local #locationBackground {
+  background-image: url("http://farm9.staticflickr.com/8278/8710831494_63c5940287_o.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 1400px;
+}
+#location.local #locationWrap {
+  overflow: hidden;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.9), 0px 1px 10px #ffffff;
+  /*&:before {
+				content:'';
+				display: block;
+				position: absolute;
+				z-index: 109;
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+				background-color:white;
+				-webkit-filter: blur(5px);
+			}*/
+
+}
+#location.local #locationWrap:after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 110;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("http://farm9.staticflickr.com/8278/8710831494_63c5940287_o.jpg");
+  background-position: center -120px;
+  background-repeat: no-repeat;
+  background-size: 1400px;
+  -webkit-filter: blur(10px);
 }
