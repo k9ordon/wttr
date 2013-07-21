@@ -16,16 +16,17 @@ a {
 #location #locationWrap {
   height: 100%;
   color: white;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 #location #locationWrap.typeSunny {
-  background: orange;
+  background: #F8C48B;
 }
 #location #locationWrap.typeRain {
-  background: blue;
+  background: #81A8B8;
 }
 #location #locationWrap.typePartlycloudy {
-  background: gray;
+  background: #C2CBCE;
 }
 #location #locationWrap h1 {
   font-size: 60px;
@@ -49,13 +50,13 @@ a {
 }
 #location #locationWrap .detail {
   width: 640px;
-  border: 0px solid white;
-  border-width: 1px 0 1px 0;
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 3px 0 3px 0;
   margin: 0 auto;
 }
 #location #locationWrap .detail .hour {
   display: inline-block;
-  border: 0px solid white;
+  border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 1px 0 0;
   padding: 10px 20px;
   font-size: 18px;
@@ -71,7 +72,7 @@ a {
   margin: 5px 0 15px;
 }
 #location #locationWrap .detail .hour .time {
-  border: 0px solid white;
+  border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 1px 0;
 }
 #location #locationWrap .detail .hour .temp {
