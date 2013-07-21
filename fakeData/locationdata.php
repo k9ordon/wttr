@@ -40,7 +40,7 @@ function fakeDayHours($start = 0, $intervall = 3, $limit = 7) {
 
 $config['fake']['locationData'] = array(
 	'name' => 'Linz',
-	'today' => fakeDay(0),
+	'today' => fakeDay(0, time()),
 	'forecast' => array(
 		fakeDay(0), fakeDay(1), fakeDay(2), fakeDay(3), fakeDay(4), fakeDay(5), fakeDay(6)
 	)
