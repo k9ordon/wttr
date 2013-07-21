@@ -6,9 +6,9 @@
 	<div class="dayCard">
 		<h2><?=$this->location['today']['temp'] ?>°C</h2>
 		<h3><?=$this->location['today']['type']['name']?></h3>
-		<h4><?=$this->config['weekdays'][date('w', $this->location['today']['time'])]?>, <?=date('d.m.Y', $this->location['today']['time'])?></h4>
+		<h4><?=$this->config['weekdays'][date('w', $this->location['today']['time'])]?>, <?=date('d.m.Y H:i', $this->location['today']['time'])?></h4>
 	
-		<canvas id="dayChart" class="dayChart" width="640" height="400"></canvas>
+		<div class="dayChart" style="height:100px; width:640px"></div>
 
 		<div class="detail">
 			<? foreach($this->location['today']['detail'] as $detail) : ?>
@@ -46,7 +46,7 @@
 </div>
 
 <div id="ad">
-	<img src="http://placekitten.com/120/600" />
+	<?/* * /?><img src="http://placekitten.com/120/600" /><?/**/?>
 </div>
 
 <? include "_foot.php" ?>
