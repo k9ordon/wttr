@@ -1,3 +1,11 @@
 console.log('app booted');
+_locationCard = new locationCard();
 
-_locationCard = new locationCard().init();
+
+var readyStateCheckInterval = setInterval(function() {
+    if (document.readyState === "complete") {
+        _locationCard.init();
+        clearInterval(readyStateCheckInterval);
+    }
+}, 10);
+
