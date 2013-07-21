@@ -3,8 +3,18 @@
 class Controller_Location extends Controller {
 
 	public function Action_Index() {
-		$this->htmlClassList[] = 'local';
+		if($_GET['local'] == true) {
+			$this->htmlClassList[] = 'local';
+		}
+
 		$this->getLocationData();
+
+		var_dump($this->router->urlParts);
+
+		if($this->router->urlParts[2]) {
+			$this->location['name'] = $this->router->urlParts[2];
+		}
+		
 		$this->render('location-index');
 	}
 
