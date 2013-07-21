@@ -13,20 +13,35 @@ body {
 a {
   color: #ff0000;
 }
+#location #locationBackground {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+}
+#location #locationBackground img {
+  width: 100%;
+}
 #location #locationWrap {
+  position: fixed;
+  z-index: 100;
   height: 100%;
+  width: 100%;
   color: white;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8), 0px 1px 10px rgba(0, 0, 0, 0.3);
+  /*
+		&.typeSunny {
+			background:#F8C48B;
+		}
+		&.typeRain {
+			background:#81A8B8;
+		}
+		&.typePartlycloudy {
+			background:#C2CBCE;
+		}
+*/
+
   text-align: center;
-}
-#location #locationWrap.typeSunny {
-  background: #F8C48B;
-}
-#location #locationWrap.typeRain {
-  background: #81A8B8;
-}
-#location #locationWrap.typePartlycloudy {
-  background: #C2CBCE;
 }
 #location #locationWrap h1 {
   font-size: 60px;
