@@ -23,6 +23,10 @@ nav#main-nav {
   z-index: 150;
   top: 0;
   line-height: 48px;
+  width: 100%;
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 0 0 1px;
+  opacity: 0.9;
 }
 nav#main-nav span {
   display: inline-block;
@@ -34,12 +38,24 @@ nav#main-nav span {
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 5px rgba(0, 0, 0, 0.2);
 }
 nav#main-nav #logo {
-  padding: 20px 0 20px 40px;
+  padding: 20px 0 20px 20px;
   text-decoration: none;
   color: white;
 }
 nav#main-nav #location {
   font-weight: 400;
+}
+#location.typeSunny #locationBackground,
+#location.typeSunny nav#main-nav {
+  background-color: #F8C48B;
+}
+#location.typeRain #locationBackground,
+#location.typeRain nav#main-nav {
+  background-color: #81A8B8;
+}
+#location.typePartlycloudy #locationBackground,
+#location.typePartlycloudy nav#main-nav {
+  background-color: #C2CBCE;
 }
 #location #locationBackground {
   position: fixed;
@@ -51,15 +67,6 @@ nav#main-nav #location {
 #location #locationBackground img {
   width: 100%;
 }
-#location #locationBackground.typeSunny {
-  background-color: #F8C48B;
-}
-#location #locationBackground.typeRain {
-  background-color: #81A8B8;
-}
-#location #locationBackground.typePartlycloudy {
-  background-color: #C2CBCE;
-}
 #location #ad {
   position: fixed;
   z-index: 100;
@@ -70,10 +77,11 @@ nav#main-nav #location {
   position: relative;
   z-index: 120;
   width: 640px;
+  max-width: 100%;
   color: white;
-  margin: 120px auto 0;
+  margin: 120px auto 100px;
   padding: 0 0;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.7), 0px 1px 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6), 0px 2px 10px rgba(255, 255, 255, 0.4);
 }
 #location #locationWrap h1 {
   font-size: 60px;
@@ -101,26 +109,31 @@ nav#main-nav #location {
 #location #locationWrap .dayCard h3 {
   font-size: 60px;
   line-height: 80px;
+  margin: 0 0 0 20px;
 }
 #location #locationWrap .dayCard h4 {
   font-size: 24px;
   line-height: 35px;
-  margin: 0 0 20px;
+  margin: 0 0 20px 20px;
+  font-weight: 400;
 }
-#location #locationWrap .dayCard .dayChart {
+#location #locationWrap .dayCard .dayForeacast {
+  width: 100%;
+}
+#location #locationWrap .dayCard .dayForeacast .dayChart {
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 1px 0 0 0;
   position: relative;
   z-index: 10;
 }
-#location #locationWrap .dayCard .detail {
+#location #locationWrap .dayCard .dayForeacast .detail {
   text-align: center;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 1px 0 0 0;
   margin: 0 auto;
   white-space: nowrap;
 }
-#location #locationWrap .dayCard .detail .hour {
+#location #locationWrap .dayCard .dayForeacast .detail .hour {
   display: inline-block;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 1px 0 0;
@@ -128,41 +141,96 @@ nav#main-nav #location {
   font-size: 18px;
   line-height: 20px;
 }
-#location #locationWrap .dayCard .detail .hour:last-child {
+#location #locationWrap .dayCard .dayForeacast .detail .hour:last-child {
   border-width: 0;
 }
-#location #locationWrap .dayCard .detail .hour .icon {
+#location #locationWrap .dayCard .dayForeacast .detail .hour .icon {
   display: inline-block;
   font-size: 48px;
   line-height: 32px;
   margin: 5px 0 15px;
 }
-#location #locationWrap .dayCard .detail .hour .time {
+#location #locationWrap .dayCard .dayForeacast .detail .hour .time {
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 1px 0;
   font-weight: 400;
 }
-#location #locationWrap .dayCard .detail .hour .temp {
+#location #locationWrap .dayCard .dayForeacast .detail .hour .temp {
   font-weight: 400;
 }
-#location #locationWrap .dayCard .detail .hour .rain {
+#location #locationWrap .dayCard .dayForeacast .detail .hour .rain {
+  display: none;
+}
+#location #locationWrap #forecastV {
+  position: relative;
+  z-index: 120;
+  text-align: center;
+}
+#location #locationWrap #forecastV h3 {
+  margin: 40px 20px 10px;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: left;
+}
+#location #locationWrap #forecastV .forecastChart {
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 1px 0 0 0;
+  position: relative;
+  z-index: 10;
+}
+#location #locationWrap #forecastV .day {
+  display: inline-block;
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 0 1px 0 0;
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 20px;
+}
+#location #locationWrap #forecastV .day:last-child {
+  border-width: 0;
+}
+#location #locationWrap #forecastV .day .icon {
+  display: inline-block;
+  font-size: 32px;
+  line-height: 32px;
+  margin: 5px 0 15px;
+}
+#location #locationWrap #forecastV .day .time {
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 0 0 1px 0;
+  font-weight: 400;
+}
+#location #locationWrap #forecastV .day .temp {
+  font-weight: 400;
+}
+#location #locationWrap #forecastV .day .rain {
   display: none;
 }
 #location #locationWrap #forecast {
   position: relative;
   z-index: 120;
+  overflow: hidden;
+  width: 100%;
 }
 #location #locationWrap #forecast h3 {
-  margin: 40px 20px 10px;
+  margin: 40px 20px 20px;
   font-size: 24px;
   line-height: 35px;
+  font-weight: 400;
+  text-align: left;
+}
+#location #locationWrap #forecast .forecastChart {
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 1px 0 0 0;
+  position: relative;
+  z-index: 10;
 }
 #location #locationWrap #forecast .day {
   text-align: center;
   zoom: 1;
   display: block;
   border: 0px solid rgba(255, 255, 255, 0.5);
-  border-width: 0 0px 1px 0;
+  border-width: 1px 0px 0px 0;
   padding: 10px 20px;
   font-size: 18px;
   line-height: 20px;
@@ -176,9 +244,6 @@ nav#main-nav #location {
   content: '';
   display: table;
   clear: both;
-}
-#location #locationWrap #forecast .day:last-child {
-  border-width: 0;
 }
 #location #locationWrap #forecast .day.active {
   background: rgba(255, 255, 255, 0.1);
