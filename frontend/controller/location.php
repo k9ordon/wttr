@@ -7,7 +7,10 @@ class Controller_Location extends Controller {
 			$this->htmlClassList[] = 'local';
 		}
 
+
 		$this->getLocationData();
+
+		$this->htmlClassList[] = 'type'.ucfirst($this->location['today']['type']['class']);
 
 		if($this->router->urlParts[2]) {
 			$this->location['name'] = $this->router->urlParts[2];
@@ -18,5 +21,6 @@ class Controller_Location extends Controller {
 
 	public function getLocationData() {
 		$this->location = $this->config['fake']['locationData'];
+
 	}
 }
