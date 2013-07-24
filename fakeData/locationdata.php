@@ -2,6 +2,7 @@
 
 function fakeDay($addDays = 0, $timestamp = false) {
 	global $config;
+	$icons = array('icon-sun', 'icon-moon', 'icon-cloudy', 'icon-cloud', 'icon-rainy', 'icon-lightning');
 
 	$ts = $timestamp ? $timestamp : strtotime(sprintf('+ %s days 0:00', $addDays));
 	return array(
@@ -17,6 +18,8 @@ function fakeDay($addDays = 0, $timestamp = false) {
 }
 
 function fakeDayHours($start = 0, $intervall = 3, $limit = 7) {
+	global $config;
+	
 	$icons = array('icon-sun', 'icon-moon', 'icon-cloudy', 'icon-cloud', 'icon-rainy', 'icon-lightning');
 	$item = array();
 
