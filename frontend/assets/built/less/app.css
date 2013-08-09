@@ -45,18 +45,22 @@ nav#main-nav #location {
 }
 #location #backgroundImage {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   z-index: 100;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
 }
 #location #backgroundImage img {
-  width: 120%;
-  height: auto;
-  opacity: 0.7;
-  position: relative;
-  top: -20%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+  opacity: 0.5;
 }
 #location.typeSunny #locationBackground,
 #location.typeSunny nav#main-nav_ {
@@ -94,7 +98,6 @@ nav#main-nav #location {
   color: white;
   margin: 120px auto 100px;
   padding: 0 0;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6), 0px 2px 10px rgba(255, 255, 255, 0.4);
 }
 #location #locationWrap h1 {
   font-size: 60px;
