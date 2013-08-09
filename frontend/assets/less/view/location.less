@@ -1,20 +1,40 @@
 #location {
 
+	#backgroundImage {
+		position: fixed;
+		top:0;
+		left:0;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+
+		img {
+			width: 120%;
+			height: auto;
+			opacity: 0.7;
+			position: relative;
+			top: -20%;
+		}
+	}
+
 	&.typeSunny {
-		#locationBackground, nav#main-nav {
+		#locationBackground, nav#main-nav_ {
 			background-color:#F8C48B;
 		}
 		
 	}
 	&.typeRain {
-		#locationBackground, nav#main-nav {
+		#locationBackground, nav#main-nav_ {
 			background-color:#81A8B8;
 		}
 	}
 	&.typePartlycloudy {
-		#locationBackground, nav#main-nav {
+		#locationBackground, nav#main-nav_ {
 			background-color:#C2CBCE;
 		}
+	}
+	&.typeSnow {
+		
 	}
 
 	#locationBackground {
@@ -71,7 +91,7 @@
 				font-size: 130px;
 				line-height: 130px;
 				font-weight: 400;
-				float: left;
+				//float: left;
 				margin:0 20px;
 			}
 			h3 {
@@ -286,7 +306,7 @@
 		
 		#locationWrap {
 			overflow: hidden;
-			text-shadow: 0px 1px 2px rgba(0,0,0,0.9), 0px 1px 10px rgba(255,255,255,1);
+			//text-shadow: 0px 1px 2px rgba(0,0,0,0.9), 0px 1px 10px rgba(255,255,255,1);
 
 			&:after {
 				content:'';

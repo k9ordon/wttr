@@ -1,10 +1,21 @@
 <? include "_head.php" ?>
 
+<a id="backgroundImage" href="<?=sprintf('http://www.flickr.com/photos/%s/%s',$this->randomPhoto['owner'],$this->randomPhoto['id'])?>" title="Linz von austrianpsycho bei Flickr">
+
+<img src="<?=
+sprintf(
+'http://farm6.staticflickr.com/%s/%s_%s_b.jpg',
+$this->randomPhoto['server'],
+$this->randomPhoto['id'],
+$this->randomPhoto['secret'])
+?>" width="1024" height="673" alt="Linz">
+</a>
+
 <div id="locationWrap">
 	<h1>Wetter <?=$this->location['name']?></h1>
 
 	<div class="dayCard">
-		<h2><?=$this->location['today']['temp'] ?>°C</h2>
+		<h2><?=$this->location['today']['temp'] ?>&#8451;</h2>
 		<h3><?=$this->location['today']['type']['name']?></h3>
 		<h4><?=$this->config['weekdays'][date('w', $this->location['today']['time'])]?>, <?=date('d.m.Y H:i', $this->location['today']['time'])?></h4>
 	
