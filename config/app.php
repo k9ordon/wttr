@@ -14,7 +14,7 @@ $config['weekdaysShort'] = array(
 $config['weatherTypes'] = array(
 	//'clear' => array('name' => 'Wolkenlos'), 
 	//'mostlySunny', 
-	'sunny' => array('name' => 'Sonnig', 'class' => 'sunny'), 
-	'partlyCloudy' => array('name' => 'Leicht Bewölkt', 'class' => 'partlycloudy'), 
-	'rain' => array('name' => 'Regen', 'class' => 'rain')
+	'sunny' => array('name' => 'Sonnig', 'class' => 'sunny', 'flickrtag' => 'sunny'), 
+	'partlyCloudy' => array('name' => 'Leicht Bewölkt', 'class' => 'partlycloudy', 'flickrtag' => 'cloudy'), 
+	'rain' => array('name' => 'Regen', 'class' => 'rain', 'flickrtag' => 'rain')
 );
