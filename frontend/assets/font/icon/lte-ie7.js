@@ -11,10 +11,15 @@ window.onload = function() {
 			'icon-cloudy' : '&#xe002;',
 			'icon-cloud' : '&#xe003;',
 			'icon-rainy' : '&#xe004;',
-			'icon-lightning' : '&#xe005;',
 			'icon-cloud-2' : '&#xe006;',
-			'icon-weather' : '&#xe007;',
-			'icon-Celsius' : '&#xe008;'
+			'icon-Celsius' : '&#xe008;',
+			'icon-weather' : '&#xe00a;',
+			'icon-cloudy-2' : '&#xe009;',
+			'icon-rainy-2' : '&#xe007;',
+			'icon-snowy' : '&#xe00b;',
+			'icon-lightning' : '&#xe00c;',
+			'icon-lines' : '&#xe005;',
+			'icon-thermometer' : '&#xe00d;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

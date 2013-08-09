@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-sun, .icon-moon, .icon-cloudy, .icon-cloud, .icon-rainy, .icon-lightning, .icon-cloud-2, .icon-weather, .icon-Celsius {
+.icon-sun, .icon-moon, .icon-cloudy, .icon-cloud, .icon-rainy, .icon-cloud-2, .icon-Celsius, .icon-weather, .icon-cloudy-2, .icon-rainy-2, .icon-snowy, .icon-lightning, .icon-lines, .icon-thermometer {
 	font-family: 'meteocons';
 	speak: none;
 	font-style: normal;
@@ -52,15 +52,30 @@ you can use the generic selector below, but it's slower:
 .icon-rainy:before {
 	content: "\e004";
 }
-.icon-lightning:before {
-	content: "\e005";
-}
 .icon-cloud-2:before {
 	content: "\e006";
 }
-.icon-weather:before {
-	content: "\e007";
-}
 .icon-Celsius:before {
 	content: "\e008";
+}
+.icon-weather:before {
+	content: "\e00a";
+}
+.icon-cloudy-2:before {
+	content: "\e009";
+}
+.icon-rainy-2:before {
+	content: "\e007";
+}
+.icon-snowy:before {
+	content: "\e00b";
+}
+.icon-lightning:before {
+	content: "\e00c";
+}
+.icon-lines:before {
+	content: "\e005";
+}
+.icon-thermometer:before {
+	content: "\e00d";
 }
