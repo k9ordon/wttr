@@ -30,7 +30,8 @@ class Controller_Location extends Controller {
 
 		$result = $photoApi->search($this->location['today']['type']['flickrtag'], 'xum7xdNQUL_5UeTriA');
 		$this->locationPhotos = $result['photos']['photo'];
-		$this->randomPhoto = $this->locationPhotos[rand(0,1)];
+		$this->randomPhoto = $this->locationPhotos[rand(0,round(count($this->locationPhotos)/10))];
+
 		//var_dump($this->locationPhotos);exit;
 	}
 }
