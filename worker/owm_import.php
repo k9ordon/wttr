@@ -8,7 +8,10 @@ include '../enviroment.php';
 include 'autoloader.php';
 
 $owm = new Model_OWM();
-$weaterPageArray = $owm->getCurrent();
+//var_dump($owm->getHours());
+var_dump($owm->getWeather());
+
+//var_dump($meminstance);
 
 //var_dump($config['fake']['locationData']);exit;
-var_dump($weaterPageArray);
+//var_dump($currentWeather);

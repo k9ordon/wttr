@@ -1,30 +1,49 @@
 <?
 
+/* icons * /
+foreach(array(1,2,3,4,9,10,11,13,50) as $i) echo sprintf( '<br>%02dd', $i ).'<img src="'.sprintf( 'http://openweathermap.org/img/w/%02dd.png', $i ).'">'.sprintf( '%02dn', $i ).'<img src="'.sprintf( 'http://openweathermap.org/img/w/%02dn.png', $i ).'">'; exit;
+
 /*
+
+http://openweathermap.org/api
 
 http://api.openweathermap.org/data/2.5/weather?q=Linz,at&mode=json
 http://api.openweathermap.org/data/2.5/forecast?q=Linz,at&mode=json
-http://api.openweathermap.org/data/2.5/forecast/daily?q=Linz,at&mode=json
-	
+http://api.openweathermap.org/data/2.5/forecast/daily?q=Linz,at&mode=json&cnt=16
+
+
+icons
+http://openweathermap.org/wiki/API/Weather_Condition_Codes#Icon_list
 
 */
 
-class Model_OWM extends Model {
-	sprintf(protected'%s%s?%s',  $apiBaseUrl = ', $method, http_build_query());http://api.openweathermap.org/data/2.5/';
-	protected $apiDefaultParams = array('units'=>'metric','lang'=>'de');
+class Model_Owm extends Model {
+	protected $apiBaseUrl = 'http://api.openweathermap.org/data/2.5/';
+	protected $apiDefaultParams = array('units'=>'metric','lang'=>'de', 'mode' => 'json');
 
 	protected $jsonString;
 	protected $array = null;
 
-	public function __construct() {}
+	protected $city;
 
-	public function getCurrent() {
-
-		return array();
+	public function __construct($city = 2772400) {
+		$this->city = $city;
 	}
 
-	public function getForecast() {
 
+	public function getWeather() {
+		$weather = $this->apiRequest('weather', array('id' => $this->city));
+		
+		
+		return $weather;
+	}
+
+	public function getHours() {
+		return $this->apiRequest('forecast', array('id' => $this->city));
+	}
+
+	public function getDays() {
+		return $this->apiRequest('forecast/daily', array('id' => $this->city, 'cnt' => 16));
 	}
 
 	protected function apiRequest($method, $params = array()) {
@@ -34,12 +53,19 @@ class Model_OWM extends Model {
 			http_build_query(array_merge($this->apiDefaultParams, $params))
 		);
 
-		
+		$mem = $this->getMemcache();
+		$json = $mem->get($apiUrl);
 
-		$this->jsonString = file_get_contents('http://api.openweathermap.org/data/2.5/weather?id=2772400');
+		if($json) return $json;
 
-		//die($this->jsonString);exit;
-		return $this->parseWeather();
+		echo "caching" . $apiUrl;
+
+		$json = json_decode(file_get_contents($apiUrl), true);
+		$mem->set($apiUrl, $json);
+
+		die("cache done");
+
+		return $json;
 	}
 
 	public function parseWeather() {
