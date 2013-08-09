@@ -1,8 +1,6 @@
 @import "../../font/icon/style.css";
 
 @import "../../vendor/reset.css";
-
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -12,8 +10,8 @@ body {
   background-color: #d3d3d3;
 }
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 200;
+  font-family: 'Helvetica Neue';
+  font-weight: 100;
 }
 a {
   color: #ff0000;
@@ -26,7 +24,7 @@ nav#main-nav {
   width: 100%;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 1px;
-  opacity: 0.6;
+  opacity: 1;
 }
 nav#main-nav span {
   display: inline-block;
@@ -45,16 +43,31 @@ nav#main-nav #logo {
 nav#main-nav #location {
   font-weight: 400;
 }
+#location #backgroundImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+#location #backgroundImage img {
+  width: 120%;
+  height: auto;
+  opacity: 0.7;
+  position: relative;
+  top: -20%;
+}
 #location.typeSunny #locationBackground,
-#location.typeSunny nav#main-nav {
+#location.typeSunny nav#main-nav_ {
   background-color: #F8C48B;
 }
 #location.typeRain #locationBackground,
-#location.typeRain nav#main-nav {
+#location.typeRain nav#main-nav_ {
   background-color: #81A8B8;
 }
 #location.typePartlycloudy #locationBackground,
-#location.typePartlycloudy nav#main-nav {
+#location.typePartlycloudy nav#main-nav_ {
   background-color: #C2CBCE;
 }
 #location #locationBackground {
@@ -103,7 +116,6 @@ nav#main-nav #location {
   font-size: 130px;
   line-height: 130px;
   font-weight: 400;
-  float: left;
   margin: 0 20px;
 }
 #location #locationWrap .dayCard h3 {
@@ -278,7 +290,6 @@ nav#main-nav #location {
 }
 #location.local #locationWrap {
   overflow: hidden;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.9), 0px 1px 10px #ffffff;
   /*&:before {
 				content:'';
 				display: block;
