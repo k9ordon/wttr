@@ -1,6 +1,6 @@
 <? include "_head.php" ?>
 
-<a id="backgroundImage" href="<?=sprintf('http://www.flickr.com/photos/%s/%s',$this->randomPhoto['owner'],$this->randomPhoto['id'])?>" title="Linz von austrianpsycho bei Flickr">
+<a id="backgroundImage" target="_blank" href="<?=sprintf('http://www.flickr.com/photos/%s/%s',$this->randomPhoto['owner'],$this->randomPhoto['id'])?>" title="Linz von austrianpsycho bei Flickr">
 
 <img src="<?=
 sprintf(
@@ -15,20 +15,30 @@ $this->randomPhoto['secret'])
 	<h1>Wetter <?=$this->location['name']?></h1>
 
 	<div class="dayCard">
-		<h2><?=$this->location['today']['temp'] ?>&#8451;</h2>
-		<h3><?=$this->location['today']['type']['name']?></h3>
-		<h4><?=$this->config['weekdays'][date('w', $this->location['today']['time'])]?>, <?=date('d.m.Y H:i', $this->location['today']['time'])?></h4>
+		<h2><?=round($this->weather['main']['temp']); ?><span class="icon-Celsius"></span></h2>
+		<h3><?=$this->weather['weather'][0]['description']?></h3>
+		<? // var_dump($this->weather); ?>
+		<h4><?=$this->config['weekdays'][date('w', $this->weather['dt'])]?>, <?=date('d.m.Y H:i', $this->weather['dt'])?></h4>
 	
-		<div class="dayForeacast">
-			<div class="dayChart" style="height:100px; width:640px"></div>
+		<?//=$this->weather['weather'][0]['main']?>
+
+		<div class="hourForeacast">
+			<div class="dayChart" style="height:100px; width:100%"></div>
+			<script>var hourChartData = JSON.parse('<?=$this->hourGraphJson;?>');</script>
 
 			<div class="detail">
-				<? foreach($this->location['today']['detail'] as $detail) : ?>
+				<? foreach(array_slice($this->hours['list'], 0, 7) as $hour) : ?>
+				<? $hourWeatherType = $this->config['weatherTypes'][$hour['weather'][0]['icon']]; ?>
+
 				<div class="hour">
-					<p class="icon"><span class="<?=$detail['icon']?>"></span></p>
-					<p class="time"><?=date('H:i', $detail['time'])?></p>
-					<p class="temp"><?=$detail['temp']?>°C</p>
-					<p class="rain"><?=$detail['rain']?>%</p>
+				<div class="pin">
+					<?//=$hour['weather'][0]['main']?>
+
+					<p class="icon <?=$hourWeatherType['class']?>"><span class="<?=$hourWeatherType['icon']?>"></span></p>
+					<p class="time"><?=date('D H:i', $hour['dt'])?></p>
+					<p class="temp"><?=$hour['main']['temp']?>°C</p>
+					<!--<p class="rain"><?var_dump($hour['rain'])?></p>-->
+				</div>
 				</div>
 				<? endforeach; ?>
 			</div>
