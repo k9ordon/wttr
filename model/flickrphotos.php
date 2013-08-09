@@ -4,15 +4,26 @@
 //
 class Model_Flickrphotos extends Model {
 
-	protected $flickrPhotoSearchApiUrl = 'http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%s&tags=%s&sort=int&place_id=%s&format=php_serial';
+	protected $flickrPhotoSearchApiUrl = 'http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%s&tags=%s&tag_mode=all&sort=int&place_id=%s&min_upload_date=%s&format=php_serial';
 
-	public function search($tag, $locationId) {
-		$string = file_get_contents(sprintf(
+	public function search($tag, $locationId, $minUploadDate = false) {
+		$apiUrl = sprintf(
 			$this->flickrPhotoSearchApiUrl, 
 			getenv('APIKEY_FLICKR'), 
 			$tag, 
-			$locationId));
-		//die($string);
+			$locationId,
+			!$minUploadDate ? strtotime('Last Monday', strtotime('Last Month - 4 year')) : $minUploadDate);
+
+		$mem = $this->getMemcache();
+		$string = $mem->get($apiUrl);
+		if($string) return unserialize($string);
+
+		echo "caching" . $apiUrl;
+
+		$string = file_get_contents($apiUrl);
+		$mem->set($apiUrl, $string);
+
+		die("cache done");
 		return unserialize($string);
 	}
 
