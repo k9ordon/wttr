@@ -1,6 +1,5 @@
 var locationCard = function() {
-		this.$el = document.querySelector('.dayCard');
-		this.$dayChart = document.querySelector('.dayCard .dayChart');
+		this.$hourChart = document.querySelector('.hourForeacast .hourChart');
 		this.$forecastChart = document.querySelector('#forecast .forecastChart');
 	},
 	p = locationCard.prototype;
@@ -8,25 +7,22 @@ var locationCard = function() {
 p.init = function() {
 	this.createChart();
 	this.events();
-	console.log([this.$dayChart, this.$forecastChart]);
+	console.log([this.$hourChart, this.$forecastChart]);
 	return this;
 }
 
 p.events = function() {
-	this.$el.addEventListener('click', function() {
-		console.log('yolo');
-	});
 }
 
 p.createChart = function() {
-	this.createDayChart();
-	this.createForecastChart();	
+	this.createhourChart();
+	//this.createForecastChart();	
 }
 
-p.createDayChart = function() {
-	this.$dayChart.style.width = window.innerWidth;
+p.createhourChart = function() {
+	this.$hourChart.style.width = window.innerWidth;
 
-	var c = new Charts.LineChart(this.$dayChart, {
+	var c = new Charts.LineChart(this.$hourChart, {
 		show_grid: false,
 	  	label_max: false,
   		label_min: false,
@@ -54,9 +50,9 @@ p.createDayChart = function() {
 	    line_color: "#81A8B8",
 	    dot_color: "#F8C48B",
 	    area_color: "#81A8B8",//"230-#81A8B8-#A4BCC2-#C2CBCE-#DBE6EC-#E8F3F8",
-	    area_opacity: 0,
+	    area_opacity: 0.5,
 	    dot_size: 0,
-	    line_width: 2
+	    line_width: 1
 	  }
     });
 /*
