@@ -4,12 +4,11 @@ $config['base'] = 'http://'.$_SERVER['SERVER_NAME'] . '';
 $config['contentBase'] = $config['base'];
 
 $config['weekdays'] = array(
-	'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samastag', 'Sonntag'
+	'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samastag'
 	);
 $config['weekdaysShort'] = array(
-	'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'
+	'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'
 	);
-
 
 $config['weatherTypes'] = array(
 	//'clear' => array('name' => 'Wolkenlos'), 
@@ -20,12 +19,14 @@ $config['weatherTypes'] = array(
 	'01d' => array(
 		'name' => 'Klar', 
 		'class' => 'clear', 
-		'flickrtag' => 'sonne',
-		'icon' => 'icon-cloudy'),
+		'flickrsearch' => urlencode('sun sonne'),
+		//'flickrtag' => 'sun',
+		'icon' => 'icon-sun'),
 	'01n' => array(
 		'name' => 'Klar', 
 		'class' => 'moon', 
-		'flickrtag' => 'moon',
+		'flickrsearch' => urlencode('night nacht mond moon'),
+		//'flickrtag' => 'moon',
 		'icon' => 'icon-moon'),
 
 	// leichte wolken
@@ -33,12 +34,15 @@ $config['weatherTypes'] = array(
 	'02d' => array(
 		'name' => 'Leicht Bewölkt', 
 		'class' => 'fewclouds', 
-		'flickrtag' => 'cloudy',
+		//'flickrsearch' => urlencode('cloudy -night'),
+		'flickrtag' => 'cloudy,-night,-nacht',
+		//'flickrsearch' => urlencode('-art -instagram cloudy OR bewölkt OR wolken OR clouds -night -nacht -mond -moon -gewitter -regen'),
+		//'flickrtag' => '-night,-nacht',
 		'icon' => 'icon-cloudy'),
 	'02n' => array(
 		'name' => 'Leicht Bewölkt', 
-		'class' => 'fewclouds', 
-		'flickrtag' => 'night',
+		'class' => 'moon', 
+		'flickrsearch' => urlencode('night nacht'),
 		'icon' => 'icon-moon'),
 
 
@@ -47,11 +51,12 @@ $config['weatherTypes'] = array(
 	'03d' => array(
 		'name' => 'Bewölkt', 
 		'class' => 'cloudy', 
-		'flickrtag' => 'cloudy',
+		'flickrsearch' => urlencode('(-art -instagram) AND (cloudy OR bewölkt OR wolken OR clouds) AND (-night -nacht -mond -moon -gewitter -regen)'),
 		'icon' => 'icon-cloud-2'),
+
 	'03n' => array(
 		'name' => 'Bewölkt', 
-		'class' => 'cloudy', 
+		'class' => 'moon', 
 		'flickrtag' => 'night',
 		'icon' => 'icon-moon'),
 
@@ -60,7 +65,7 @@ $config['weatherTypes'] = array(
 	'04d' => array(
 		'name' => 'Stark Bewölkt', 
 		'class' => 'brokenclouds', 
-		'flickrtag' => 'cloudy',
+		'flickrsearch' => urlencode('-art -instagram cloudy OR bewölkt OR wolken OR clouds -night -nacht -mond -moon'),
 		'icon' => 'icon-cloudy-2'),
 	'04n' => array(
 		'name' => 'Stark Bewölkt', 
