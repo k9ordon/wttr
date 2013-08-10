@@ -20,7 +20,7 @@ nav#main-nav {
   position: fixed;
   z-index: 150;
   top: 0;
-  line-height: 48px;
+  line-height: 18px;
   width: 100%;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 1px;
@@ -28,7 +28,7 @@ nav#main-nav {
 }
 nav#main-nav span {
   display: inline-block;
-  font-size: 32px;
+  font-size: 22px;
   padding: 20px 0;
   text-decoration: none;
   color: white;
@@ -42,6 +42,22 @@ nav#main-nav #logo {
 }
 nav#main-nav #location {
   font-weight: 400;
+}
+#footer {
+  position: fixed;
+  bottom: 10px;
+  z-index: 200;
+  color: #646464;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: right;
+  left: 6%;
+  right: 6%;
+}
+#footer a {
+  color: #646464;
+  text-decoration: none;
+  font-weight: 800;
 }
 #location #backgroundImage {
   position: fixed;
@@ -83,9 +99,6 @@ nav#main-nav #location {
   z-index: 50;
   top: 0;
   height: 100%;
-  width: 100%;
-}
-#location #locationBackground img {
   width: 100%;
 }
 #location #ad {
@@ -197,7 +210,7 @@ nav#main-nav #location {
   color: black;
   text-shadow: none;
   position: relative;
-  padding: 0 0 20px;
+  padding: 0 0 40px;
 }
 #location #locationWrap .dayCard .hourForeacast .detail .hour .pin:before {
   content: '';
@@ -222,6 +235,7 @@ nav#main-nav #location {
   border-radius: 180px;
   padding: 20px;
   color: gray;
+  border: 3px solid transparent;
 }
 #location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon.clear {
   background: orange;
@@ -325,41 +339,4 @@ nav#main-nav #location {
 }
 #location #locationWrap #forecast .day .rain {
   width: 20%;
-}
-#location.local #locationBackground {
-  background-image: url("http://farm9.staticflickr.com/8278/8710831494_63c5940287_o.jpg");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: 1400px;
-}
-#location.local #locationWrap {
-  overflow: hidden;
-  /*&:before {
-				content:'';
-				display: block;
-				position: absolute;
-				z-index: 109;
-				top:0;
-				left:0;
-				right:0;
-				bottom:0;
-				background-color:white;
-				-webkit-filter: blur(5px);
-			}*/
-
-}
-#location.local #locationWrap:after {
-  content: '';
-  display: block;
-  position: absolute;
-  z-index: 110;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("http://farm9.staticflickr.com/8278/8710831494_63c5940287_o.jpg");
-  background-position: center -120px;
-  background-repeat: no-repeat;
-  background-size: 1400px;
-  -webkit-filter: blur(10px);
 }

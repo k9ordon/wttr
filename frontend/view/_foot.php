@@ -1,3 +1,10 @@
+<div id="footer">
+	<p>handcrafted by 
+	<a href="#">k9ordon</a> - 
+	powered by <a href="http://openweathermap.org">openweathermap api</a> - 
+	image from <a target="_blank" href="<?=sprintf('http://www.flickr.com/photos/%s/%s',$this->randomPhoto['owner'],$this->randomPhoto['id'])?>" title="">flickr</a>
+	- <?=date('Y')?>
+</div>
 </div>
 
 <? foreach(array("assets/vendor/raphy-charts/vendor/raphael.min.js", "assets/vendor/raphy-charts/compiled/charts.js") as $s) : ?>

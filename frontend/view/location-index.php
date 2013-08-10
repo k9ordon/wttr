@@ -1,7 +1,6 @@
 <? include "_head.php" ?>
 
-<a id="backgroundImage" target="_blank" href="<?=sprintf('http://www.flickr.com/photos/%s/%s',$this->randomPhoto['owner'],$this->randomPhoto['id'])?>" title="Linz von austrianpsycho bei Flickr">
-
+<div id="backgroundImage">
 <img src="<?=
 sprintf(
 'http://farm6.staticflickr.com/%s/%s_%s_b.jpg',
@@ -9,7 +8,7 @@ $this->randomPhoto['server'],
 $this->randomPhoto['id'],
 $this->randomPhoto['secret'])
 ?>" width="1024" height="673" alt="Linz">
-</a>
+</div>
 
 <div id="locationWrap">
 	<h1>Wetter <?=$this->location['name']?></h1>
@@ -64,12 +63,6 @@ $this->randomPhoto['secret'])
 		</div>
 		<? endforeach; ?>
 	</div>
-</div>
-
-<div id="locationBackground">
-	<? /* * /?>
-	<img src="http://farm9.staticflickr.com/8278/8710831494_63c5940287_o.jpg" alt="Laufrunde durch Linz">
-	<a href="http://www.flickr.com/photos/friesenecker/8710831494/" title="Laufrunde durch Linz von Daniel Friesenecker bei Flickr">c by</a><? /**/?>
 </div>
 
 <div id="ad">
