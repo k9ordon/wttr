@@ -19,16 +19,17 @@ class Model_Flickrphotos extends Model {
 
 	public function __construct($placeQuery = 'Hawaii') {
 		$places = $this->loadPlace($placeQuery);
-//var_dump($places);exit;
+		//var_dump($places);exit;
 
 		$this->place = $places['places']['place'][0];
+		//var_dump($this->place);
 	}
 
 	public function loadPlace($query) {
 		$apiUrl = $this->apiUrl(
 			'flickr.places.find', 
 			array(
-				'query' => $query
+				'query' => urlencode($query)
 			)
 		);
 
@@ -50,17 +51,22 @@ class Model_Flickrphotos extends Model {
 		return $this->place;
 	}
 
-	public function search($tag, $minUploadDate = false) {
+	public function search($query, $tags, $minUploadDate = false) {
 		$apiUrl = $this->apiUrl(
 			'flickr.photos.search', 
 			array(
-				'tags' => $tag, 
 				'tag_mode' => 'all', 
-				'sort' => 'int', 
+				//'sort' => 'int',
+				'sort' => 'interestingness-desc', 
 				'place_id' => $this->place['place_id'], 
-				'min_upload_date' => !$minUploadDate ? strtotime('Last Monday', strtotime('Last Month - 4 year')) : $minUploadDate
+				'accuracy' => 11,
+				'content_type' => 1,
+				'min_taken_date' => !$minUploadDate ? strtotime('Last Monday', strtotime('Last Month - 4 year')) : $minUploadDate,
+				'tags' => $tags,
+				'text' => $query
 			)
 		);
+		echo '<br>'.$apiUrl.'<br>';
 
 		$mem = $this->getMemcache();
 		$string = $mem->get($apiUrl);
@@ -80,7 +86,7 @@ class Model_Flickrphotos extends Model {
 		return sprintf('%s?method=%s&%s', 
 			$this->apiBaseUrl, 
 			$method, 
-			http_build_query(array_merge($this->apiDefaultParams, array('api_key' => getenv('APIKEY_FLICKR')), $params))
+			urldecode(http_build_query(array_merge($this->apiDefaultParams, array('api_key' => getenv('APIKEY_FLICKR')), $params)))
 		);
 	}
 

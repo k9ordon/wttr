@@ -2,7 +2,9 @@
 
 class Controller_Location extends Controller {
 
-	protected $locationQuery = 'Linz AT';
+	protected $locationQuery = 'Linz, AT';
+
+	protected $randomPhoto = null;
 
 	public function Action_Index() {
 		if(array_key_exists('local', $_GET) && $_GET['local'] == true) {
@@ -15,11 +17,14 @@ class Controller_Location extends Controller {
 
 		$this->getLocationData();
 
+		echo $this->weather['weather'][0]['icon'];
+
 		$this->weatherType = $this->config['weatherTypes'][$this->weather['weather'][0]['icon']];
 		$this->htmlClassList[] = 'type'.ucfirst($this->weatherType['class']);
 
 
-		$this->getLocationPhotos();
+		$this->getLocationPhotoRecursive();
+
 		$this->getHourGraphJson();
 		
 		$this->render('location-index');
@@ -27,32 +32,44 @@ class Controller_Location extends Controller {
 
 	protected function getLocationData() {
 		$Model_Owm = new Model_Owm($this->locationQuery);
-		$this->location = $this->config['fake']['locationData'];
+		// $this->location = $this->config['fake']['locationData'];
 		
 		$this->weather = $Model_Owm->getWeather();
 		$this->hours = $Model_Owm->getHours();
+		$this->days = $Model_Owm->getDays();
 
-		//var_dump($this->weather);exit;
+		//var_dump($this->days);exit;
 	}
 
-	protected function getLocationPhotos() {
-		$photoApi = new Model_Flickrphotos($this->locationQuery);
+	protected function getLocationPhotoRecursive($min = 1) {
+		$photos = $this->getLocationPhotos($this->weather['name']);
+		var_dump($this->weather['name'].' found '.count($photos));
 
-		// day
-		$result = $photoApi->search($this->weatherType['flickrtag']);
+		if(count($photos) >= $min) return $this->getRandomLoactionPhoto($photos, 3);
+
+		$photos = $this->getLocationPhotos($this->locationQuery);
+		var_dump($this->locationQuery.' found '.count($photos));
+		if(count($photos) >= $min) return $this->getRandomLoactionPhoto($photos, 3);
+
+		//exit;
+	}
+
+	protected function getLocationPhotos($query) {
+		$photoApi = new Model_Flickrphotos($query);
+		$result = $photoApi->search(@$this->weatherType['flickrsearch'], @$this->weatherType['flickrtag']);
+
+		return $result['photos']['photo'];
+	}
+
+	protected function getRandomLoactionPhoto($photos, $max) {
+
+		$photos = array_slice($photos, 0, $max);
+		//var_dump($photos);exit;
 		
-		// night
-		//$result = $photoApi->search('Nacht', 'xum7xdNQUL_5UeTriA');
+		echo('possible photos' . $max);
 
-		$this->locationPhotos = $result['photos']['photo'];
-		$count = count($this->locationPhotos);
-
-		if(round($count/10) < 1) $threshold = 3;
-		else $threshold = round($count/10);
-
-		$this->randomPhoto = $this->locationPhotos[rand(0,$threshold)];
-
-		//var_dump($this->locationPhotos);exit;
+		$this->randomPhoto = $photos[array_rand($photos)];
+		//var_dump($this->randomPhoto);exit;
 	}
 
 	protected function getHourGraphJson() {
