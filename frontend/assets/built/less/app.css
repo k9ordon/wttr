@@ -45,17 +45,17 @@ nav#main-nav #location {
 }
 #footer {
   position: fixed;
-  bottom: 10px;
+  top: 25px;
   z-index: 200;
-  color: #646464;
+  color: #f0f0f0;
   font-size: 12px;
   font-weight: 400;
   text-align: right;
   left: 6%;
-  right: 6%;
+  right: 20px;
 }
 #footer a {
-  color: #646464;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 800;
 }
@@ -78,20 +78,22 @@ nav#main-nav #location {
   height: auto;
   opacity: 0.8;
 }
-#location.typeSunny #locationBackground,
+#location.typeSunny #backgroundImage,
 #location.typeSunny nav#main-nav_ {
   background-color: #F8C48B;
 }
-#location.typeMoon #locationBackground,
+#location.typeMoon #backgroundImage,
 #location.typeMoon nav#main-nav_ {
   background-color: #000;
 }
-#location.typeRain #locationBackground,
-#location.typeRain nav#main-nav_ {
-  background-color: #81A8B8;
+#location.typeFewclouds #backgroundImage,
+#location.typeFewclouds nav#main-nav_ {
+  background-color: #bebebe;
 }
-#location.typePartlycloudy #locationBackground,
-#location.typePartlycloudy nav#main-nav_ {
+#location.typePartlycloudy #backgroundImage,
+#location.typeCloudy #backgroundImage,
+#location.typePartlycloudy nav#main-nav_,
+#location.typeCloudy nav#main-nav_ {
   background-color: #C2CBCE;
 }
 #location #locationBackground {
@@ -117,7 +119,7 @@ nav#main-nav #location {
   color: white;
   margin: 0 auto 0;
   padding: 0 0;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(20%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.9)));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.9)));
   /* Chrome,Safari4+ */
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8), 0px 1px 10px rgba(0, 0, 0, 0.3);
 }
@@ -125,21 +127,15 @@ nav#main-nav #location {
   font-size: 60px;
   display: none;
 }
-#location #locationWrap .dayCard {
-  padding: 20px 0 0px;
-  text-align: left;
-  position: relative;
-  z-index: 120;
-}
-#location #locationWrap .dayCard h2,
-#location #locationWrap .dayCard h3,
-#location #locationWrap .dayCard h4 {
+#location #locationWrap h2,
+#location #locationWrap h3,
+#location #locationWrap h4 {
   position: relative;
   z-index: 130;
   color: white;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8), 0px 1px 10px rgba(0, 0, 0, 0.3);
 }
-#location #locationWrap .dayCard h2 {
+#location #locationWrap h2 {
   font-size: 110px;
   line-height: 110px;
   font-weight: 400;
@@ -147,33 +143,36 @@ nav#main-nav #location {
   margin: 0 20px;
   vertical-align: top;
 }
-#location #locationWrap .dayCard h2 span {
+#location #locationWrap h2 span {
   width: 50px;
   display: inline-block;
   position: relative;
   top: -18px;
   left: -30px;
 }
-#location #locationWrap .dayCard h3,
-#location #locationWrap .dayCard h4 {
+#location #locationWrap h3,
+#location #locationWrap h4 {
   font-size: 45px;
   line-height: 55px;
   margin: 0;
 }
-#location #locationWrap .dayCard h3 {
+#location #locationWrap h3 {
   font-weight: 200;
 }
-#location #locationWrap .dayCard .hourForeacast {
+#location #locationWrap .hourForeacast,
+#location #locationWrap .dayForecast {
   width: 100%;
 }
-#location #locationWrap .dayCard .hourForeacast .dayChart {
+#location #locationWrap .hourForeacast .hourChart,
+#location #locationWrap .dayForecast .hourChart {
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 0 0;
   position: absolute;
   top: 140px;
   z-index: 10;
 }
-#location #locationWrap .dayCard .hourForeacast .detail {
+#location #locationWrap .hourForeacast .detail,
+#location #locationWrap .dayForecast .detail {
   text-align: center;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0px 0 0px 0;
@@ -183,16 +182,21 @@ nav#main-nav #location {
   z-index: 80;
   zoom: 1;
 }
-#location #locationWrap .dayCard .hourForeacast .detail:before {
+#location #locationWrap .hourForeacast .detail:before,
+#location #locationWrap .dayForecast .detail:before {
   content: '';
   display: block;
 }
-#location #locationWrap .dayCard .hourForeacast .detail:after {
+#location #locationWrap .hourForeacast .detail:after,
+#location #locationWrap .dayForecast .detail:after {
   content: '';
   display: table;
   clear: both;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour {
+#location #locationWrap .hourForeacast .detail .hour,
+#location #locationWrap .dayForecast .detail .hour,
+#location #locationWrap .hourForeacast .detail .day,
+#location #locationWrap .dayForecast .detail .day {
   display: inline-block;
   border: 0px solid rgba(255, 255, 255, 0.5);
   padding: 10px 20px;
@@ -201,18 +205,27 @@ nav#main-nav #location {
   width: 14.28%;
   float: left;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour:last-child {
+#location #locationWrap .hourForeacast .detail .hour:last-child,
+#location #locationWrap .dayForecast .detail .hour:last-child,
+#location #locationWrap .hourForeacast .detail .day:last-child,
+#location #locationWrap .dayForecast .detail .day:last-child {
   border-width: 0;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin {
+#location #locationWrap .hourForeacast .detail .hour .pin,
+#location #locationWrap .dayForecast .detail .hour .pin,
+#location #locationWrap .hourForeacast .detail .day .pin,
+#location #locationWrap .dayForecast .detail .day .pin {
   width: 120px;
   white-space: normal;
   color: black;
   text-shadow: none;
   position: relative;
-  padding: 0 0 40px;
+  padding: 0 0 0;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin:before {
+#location #locationWrap .hourForeacast .detail .hour .pin:before,
+#location #locationWrap .dayForecast .detail .hour .pin:before,
+#location #locationWrap .hourForeacast .detail .day .pin:before,
+#location #locationWrap .dayForecast .detail .day .pin:before {
   content: '';
   position: absolute;
   top: 50px;
@@ -220,13 +233,25 @@ nav#main-nav #location {
   bottom: -54px;
   z-index: 0;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon,
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .time,
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .temp {
+#location #locationWrap .hourForeacast .detail .hour .pin > .icon,
+#location #locationWrap .dayForecast .detail .hour .pin > .icon,
+#location #locationWrap .hourForeacast .detail .day .pin > .icon,
+#location #locationWrap .dayForecast .detail .day .pin > .icon,
+#location #locationWrap .hourForeacast .detail .hour .pin > .time,
+#location #locationWrap .dayForecast .detail .hour .pin > .time,
+#location #locationWrap .hourForeacast .detail .day .pin > .time,
+#location #locationWrap .dayForecast .detail .day .pin > .time,
+#location #locationWrap .hourForeacast .detail .hour .pin > .temp,
+#location #locationWrap .dayForecast .detail .hour .pin > .temp,
+#location #locationWrap .hourForeacast .detail .day .pin > .temp,
+#location #locationWrap .dayForecast .detail .day .pin > .temp {
   position: relative;
   z-index: 10;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon {
+#location #locationWrap .hourForeacast .detail .hour .pin > .icon,
+#location #locationWrap .dayForecast .detail .hour .pin > .icon,
+#location #locationWrap .hourForeacast .detail .day .pin > .icon,
+#location #locationWrap .dayForecast .detail .day .pin > .icon {
   display: inline-block;
   font-size: 48px;
   line-height: 32px;
@@ -237,32 +262,56 @@ nav#main-nav #location {
   color: gray;
   border: 3px solid transparent;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon.clear {
+#location #locationWrap .hourForeacast .detail .hour .pin > .icon.clear,
+#location #locationWrap .dayForecast .detail .hour .pin > .icon.clear,
+#location #locationWrap .hourForeacast .detail .day .pin > .icon.clear,
+#location #locationWrap .dayForecast .detail .day .pin > .icon.clear {
   background: orange;
   color: white;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon.fewclouds {
+#location #locationWrap .hourForeacast .detail .hour .pin > .icon.fewclouds,
+#location #locationWrap .dayForecast .detail .hour .pin > .icon.fewclouds,
+#location #locationWrap .hourForeacast .detail .day .pin > .icon.fewclouds,
+#location #locationWrap .dayForecast .detail .day .pin > .icon.fewclouds {
   background: rgba(190, 190, 190, 0.5);
   color: white;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon.cloudy {
+#location #locationWrap .hourForeacast .detail .hour .pin > .icon.cloudy,
+#location #locationWrap .dayForecast .detail .hour .pin > .icon.cloudy,
+#location #locationWrap .hourForeacast .detail .day .pin > .icon.cloudy,
+#location #locationWrap .dayForecast .detail .day .pin > .icon.cloudy {
   background: rgba(110, 110, 110, 0.5);
   color: white;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon.brokenclouds {
+#location #locationWrap .hourForeacast .detail .hour .pin > .icon.brokenclouds,
+#location #locationWrap .dayForecast .detail .hour .pin > .icon.brokenclouds,
+#location #locationWrap .hourForeacast .detail .day .pin > .icon.brokenclouds,
+#location #locationWrap .dayForecast .detail .day .pin > .icon.brokenclouds {
   background: rgba(80, 80, 80, 0.5);
   color: white;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon.rain {
+#location #locationWrap .hourForeacast .detail .hour .pin > .icon.rain,
+#location #locationWrap .dayForecast .detail .hour .pin > .icon.rain,
+#location #locationWrap .hourForeacast .detail .day .pin > .icon.rain,
+#location #locationWrap .dayForecast .detail .day .pin > .icon.rain {
   background: #81A8B8;
   color: white;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .icon.moon {
+#location #locationWrap .hourForeacast .detail .hour .pin > .icon.moon,
+#location #locationWrap .dayForecast .detail .hour .pin > .icon.moon,
+#location #locationWrap .hourForeacast .detail .day .pin > .icon.moon,
+#location #locationWrap .dayForecast .detail .day .pin > .icon.moon {
   background: rgba(0, 0, 0, 0.5);
   color: white;
 }
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .time,
-#location #locationWrap .dayCard .hourForeacast .detail .hour .pin > .temp {
+#location #locationWrap .hourForeacast .detail .hour .pin > .time,
+#location #locationWrap .dayForecast .detail .hour .pin > .time,
+#location #locationWrap .hourForeacast .detail .day .pin > .time,
+#location #locationWrap .dayForecast .detail .day .pin > .time,
+#location #locationWrap .hourForeacast .detail .hour .pin > .temp,
+#location #locationWrap .dayForecast .detail .hour .pin > .temp,
+#location #locationWrap .hourForeacast .detail .day .pin > .temp,
+#location #locationWrap .dayForecast .detail .day .pin > .temp {
   display: inline-block;
   border-width: 0 0 1px 0;
   font-weight: 400;
@@ -272,71 +321,20 @@ nav#main-nav #location {
   color: white;
   font-weight: 100;
 }
-#location #locationWrap #forecast {
-  position: relative;
-  z-index: 120;
-  overflow: hidden;
-  width: 100%;
+#location #locationWrap .dayForecast .forecastChart {
   display: none;
 }
-#location #locationWrap #forecast h3 {
-  margin: 40px 20px 20px;
-  font-size: 24px;
-  line-height: 35px;
-  font-weight: 400;
-  text-align: left;
-  color: white;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8), 0px 1px 10px rgba(0, 0, 0, 0.3);
+#location #locationWrap .dayForecast .detail {
+  border-width: 1px 0 0;
 }
-#location #locationWrap #forecast .forecastChart {
-  border: 0px solid rgba(255, 255, 255, 0.5);
-  border-width: 0px 0 1px 0;
-  position: relative;
-  z-index: 10;
+#location #locationWrap .dayForecast .detail .day {
+  width: 7.14%;
 }
-#location #locationWrap #forecast .day {
-  text-align: center;
-  zoom: 1;
-  display: block;
-  border: 0px solid rgba(100, 100, 100, 0.5);
-  border-width: 0px 0px 1px 0;
-  background: white;
-  padding: 10px 20px;
-  font-size: 18px;
-  line-height: 20px;
-  font-weight: 400;
+#location #locationWrap .dayForecast .detail .day .pin {
+  width: 50px;
 }
-#location #locationWrap #forecast .day:before {
-  content: '';
-  display: block;
-}
-#location #locationWrap #forecast .day:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-#location #locationWrap #forecast .day:last-child {
-  border-width: 0;
-}
-#location #locationWrap #forecast .day p {
-  display: inline-block;
-  float: left;
-  line-height: 32px;
-}
-#location #locationWrap #forecast .day .icon {
-  font-size: 34px;
-  width: 15%;
-}
-#location #locationWrap #forecast .day .icon span {
-  display: inline-block;
-  height: 32px;
-}
-#location #locationWrap #forecast .day .time {
-  width: 20%;
-}
-#location #locationWrap #forecast .day .temp {
-  width: 20%;
-}
-#location #locationWrap #forecast .day .rain {
-  width: 20%;
+#location #locationWrap .dayForecast .detail .day .pin .icon {
+  font-size: 28px;
+  padding: 5px;
+  font-weight: bold;
 }

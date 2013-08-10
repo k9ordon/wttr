@@ -1,3 +1,8 @@
+@fewcloudsRgb : rgb(190,190,190);
+@fewcloudsRgba : rgba(190,190,190,0.5);
+
+@FewcloudsColor : white;
+
 #location {
 
 	#backgroundImage {
@@ -29,25 +34,34 @@
 	}
 
 	&.typeSunny {
-		#locationBackground, nav#main-nav_ {
+		#backgroundImage, nav#main-nav_ {
 			background-color:#F8C48B;
 		}
 		
 	}
 	&.typeMoon {
-		#locationBackground, nav#main-nav_ {
+		#backgroundImage, nav#main-nav_ {
 			background-color:#000;
 		}
 		
 	}
 	&.typeRain {
-		#locationBackground, nav#main-nav_ {
-			background-color:#81A8B8;
+		#backgroundImage, nav#main-nav_ {
+			//background-color:#81A8B8;
 		}
 	}
-	&.typePartlycloudy {
-		#locationBackground, nav#main-nav_ {
+
+	&.typeFewclouds {
+		#backgroundImage, nav#main-nav_ {
+			background-color:@fewcloudsRgb;
+			//background: red;
+		}
+	}
+
+	&.typePartlycloudy, &.typeCloudy {
+		#backgroundImage, nav#main-nav_ {
 			background-color:#C2CBCE;
+			//background: red;
 		}
 	}
 	&.typeSnow {
@@ -82,7 +96,7 @@
 		margin:0 auto 0;
 		padding:0 0;
 
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(20%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.9))); /* Chrome,Safari4+ */		
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.9))); /* Chrome,Safari4+ */		
 		//text-shadow: 0px 1px 2px rgba(0,0,0,0.7), 0px 1px 5px rgba(0,0,0,0.2);
 		//text-shadow: 0px 1px 1px rgba(0,0,0,0.6), 0px 2px 10px rgba(255,255,255,0.4);
 
@@ -97,264 +111,201 @@
 			display: none;
 		}
 
-		.dayCard {
-			padding:20px 0 0px;
-			text-align: left;
+		h2, h3, h4 {
 			position: relative;
-			z-index: 120;
+			z-index: 130;
+			color:white;
 
-			h2, h3, h4 {
-				position: relative;
-				z-index: 130;
-				color:white;
-
-				text-shadow: 0px 1px 2px rgba(0,0,0,0.8), 0px 1px 10px rgba(0,0,0,0.3);
-			}
-
-			h2 {
-				font-size: 110px;
-				line-height: 110px;
-				font-weight: 400;
-				float: left;
-				margin:0 20px;
-				vertical-align: top;
-
-				span {
-					width: 50px;
-					display: inline-block;
-					position: relative;
-					top: -18px;
-					left: -30px;
-				}
-			}
-			h3, h4 {
-				font-size: 45px;
-				line-height: 55px;
-				margin:0;
-			}
-
-			h3 {
-				font-weight: 200;
-			}
-
-			.hourForeacast {
-				//overflow: scroll;
-				width: 100%;
-				.dayChart {
-					border: 0px solid rgba(255,255,255,0.5);
-					border-width:0 0 0 0;
-					position: absolute;
-					top:140px;
-					z-index: 10;
-					//display: none;
-				}
-				
-				.detail { 
-					text-align: center;
-
-					border: 0px solid rgba(255,255,255,0.5);
-					border-width:0px 0 0px 0;
-					margin: 10px auto 0;
-					white-space: nowrap;
-
-					position: relative;
-					z-index: 80;
-
-					.clearfix();
-
-					.hour {
-						display: inline-block;
-						border: 0px solid rgba(255,255,255,0.5);
-						//border-width:0 1px 0 0;
-
-						padding:10px 20px;
-						font-size: 18px;
-						line-height: 20px;
-						
-						width:14.28%;
-
-						float:left;
-
-						&:last-child {
-							border-width:0;
-						};
-
-						&:first-child .icon {
-							//border:3px solid white!important;
-						}
-
-						.pin {
-							//border: 1px solid red;
-							width:120px;
-							white-space: normal;
-							color:black;
-							text-shadow:none;
-							position: relative;
-							padding:0 0 40px;
-							//background: white;
-
-							&:before {
-								content:'';
-								//border-left:3px solid white;
-								position: absolute;
-								top:50px;
-								left:60px;
-								bottom:-54px;
-								z-index: 0;
-							}
-
-							> .icon, > .time, > .temp {
-								position: relative;
-								z-index: 10;
-							}
-
-							>.icon {
-								display: inline-block;
-								font-size: 48px;
-								line-height: 32px;
-								margin:5px 0 10px;
-								background: white;
-								border-radius: 180px;
-								padding:20px;
-								color:gray;
-								border:3px solid transparent;
-
-								&.clear {
-									background: orange;
-									color:white;
-								}
-
-								&.fewclouds {
-									background: rgba(190,190,190,0.5);
-									color:white;
-								} 
-
-								&.cloudy {
-									background: rgba(110,110,110,0.5);
-									color:white;
-								}
-
-								&.brokenclouds {
-									background: rgba(80,80,80,0.5);
-									color:white;
-								}
-
-								&.rain {
-									background: #81A8B8;
-									color:white;
-								}
-
-								&.moon {
-									background: rgba(0,0,0,0.5);
-									color: white;
-								}
-							}
-
-							>.time, >.temp {
-								display: inline-block;
-								//border: 0px solid rgba(255,255,255,0.5);
-								border-width:0 0 1px 0;
-								font-weight: 400;
-								//background: white;
-								padding:1px 3px;
-								font-size: 18px;
-								line-height: 20px;
-								color:white;
-								font-weight: 100;
-							}
-
-							> .time {
-								//margin:0 25px;
-							}
-
-							> .temp {
-								//font-weight: 400;
-							}
-
-							> .rain {
-								//display: none;
-							}
-						}
-					}
-				}
-			}
-
+			text-shadow: 0px 1px 2px rgba(0,0,0,0.8), 0px 1px 10px rgba(0,0,0,0.3);
 		}
 
+		h2 {
+			font-size: 110px;
+			line-height: 110px;
+			font-weight: 400;
+			float: left;
+			margin:0 20px;
+			vertical-align: top;
 
-		#forecast {
-			position: relative;
-			z-index: 120;
-			overflow: hidden;
-			width: 100%;
-			display: none;
-
-			h3 {
-				margin:40px 20px 20px;
-				font-size: 24px;
-				line-height: 35px;
-				font-weight: 400;
-				text-align: left;
-				color:white;
-				text-shadow: 0px 1px 2px rgba(0,0,0,0.8), 0px 1px 10px rgba(0,0,0,0.3);
-			}
-
-			.forecastChart {
-				border: 0px solid rgba(255,255,255,0.5);
-				border-width:0px 0 1px 0;
+			span {
+				width: 50px;
+				display: inline-block;
 				position: relative;
-				//top:-65px;
-				z-index: 10;
+				top: -18px;
+				left: -30px;
 			}
+		}
+		h3, h4 {
+			font-size: 45px;
+			line-height: 55px;
+			margin:0;
+		}
 
-			.day {
+		h3 {
+			font-weight: 200;
+		}
+
+		.hourForeacast, .dayForecast {
+			//overflow: scroll; 
+			width: 100%;
+
+			.hourChart {
+				border: 0px solid rgba(255,255,255,0.5);
+				border-width:0 0 0 0;
+				position: absolute;
+				top:140px;
+				z-index: 10;
+				//display: none;
+			}
+			
+			.detail { 
 				text-align: center;
 
+				border: 0px solid rgba(255,255,255,0.5);
+				border-width:0px 0 0px 0;
+				margin: 10px auto 0;
+				white-space: nowrap;
+
+				position: relative;
+				z-index: 80;
+
 				.clearfix();
-				display: block;
-				border: 0px solid rgba(100,100,100,0.5);
-				border-width:0px 0px 1px 0;
-				background: white;
 
-				padding:10px 20px;
-				font-size: 18px;
-				line-height: 20px;
-				font-weight: 400;
-				
-				&:last-child {
-					border-width:0;
-				};
-
-				&.active {
-					//background: rgba(255,255,255,0.1);
-					//color:black;
-				}
-
-				p {
+				.hour, .day {
 					display: inline-block;
+					border: 0px solid rgba(255,255,255,0.5);
+					//border-width:0 1px 0 0;
+
+					padding:10px 20px;
+					font-size: 18px;
+					line-height: 20px;
+					
+					width:14.28%;
+
 					float:left;
-					line-height: 32px;
-				}
 
-				.icon {
-					span {
-						display: inline-block;
-						height: 32px;
+					&:last-child {
+						border-width:0;
+					};
+
+					&:first-child .icon {
+						//border:3px solid white!important;
 					}
-					font-size: 34px;
-					width:15%;
-				}
 
-				.time {
-					width:20%;
-				}
+					.pin {
+						//border: 1px solid red;
+						width:120px;
+						white-space: normal;
+						color:black;
+						text-shadow:none;
+						position: relative;
+						padding:0 0 0;
+						//background: white;
 
-				.temp {
-					width:20%;
-				}
+						&:before {
+							content:'';
+							//border-left:3px solid white;
+							position: absolute;
+							top:50px;
+							left:60px;
+							bottom:-54px;
+							z-index: 0;
+						}
 
-				.rain {
-					width:20%;
+						> .icon, > .time, > .temp {
+							position: relative;
+							z-index: 10;
+						}
+
+						>.icon {
+							display: inline-block;
+							font-size: 48px;
+							line-height: 32px;
+							margin:5px 0 10px;
+							background: white;
+							border-radius: 180px;
+							padding:20px;
+							color:gray;
+							border:3px solid transparent;
+
+							&.clear {
+								background: orange;
+								color:white;
+							}
+
+							&.fewclouds {
+								background: @fewcloudsRgba;
+								color:white;
+							} 
+
+							&.cloudy {
+								background: rgba(110,110,110,0.5);
+								color:white;
+							}
+
+							&.brokenclouds {
+								background: rgba(80,80,80,0.5);
+								color:white;
+							}
+
+							&.rain {
+								background: #81A8B8;
+								color:white;
+							}
+
+							&.moon {
+								background: rgba(0,0,0,0.5);
+								color: white;
+							}
+						}
+
+						>.time, >.temp {
+							display: inline-block;
+							//border: 0px solid rgba(255,255,255,0.5);
+							border-width:0 0 1px 0;
+							font-weight: 400;
+							//background: white;
+							padding:1px 3px;
+							font-size: 18px;
+							line-height: 20px;
+							color:white;
+							font-weight: 100;
+						}
+
+						> .time {
+							//margin:0 25px;
+						}
+
+						> .temp {
+							//font-weight: 400;
+						}
+
+						> .rain {
+							//display: none;
+						}
+					}
+				}
+			}
+		}
+
+		.dayForecast {
+
+			.forecastChart {
+				display: none;
+			}
+			.detail { 
+				border-width:1px 0 0;
+
+				.day { 
+					width: 7.14%;
+					.pin {
+						width: 50px;
+						.icon {
+							font-size: 28px;
+							padding:5px;
+							font-weight: bold;
+						}
+					}
 				}
 			}
 		}
