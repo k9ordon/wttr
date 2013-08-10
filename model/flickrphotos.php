@@ -36,12 +36,12 @@ class Model_Flickrphotos extends Model {
 		$string = $mem->get($apiUrl);
 		if($string) return unserialize($string);
 
-		echo "caching" . $apiUrl;
+		//echo "caching" . $apiUrl;
 
 		$string = file_get_contents($apiUrl);
 		$mem->set($apiUrl, $string, MEMCACHE_COMPRESSED, 60 * 60 * 24 * 7);
 
-		die("cache done");
+		//die("cache done");
 
 		return unserialize($string);
 	}

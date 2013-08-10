@@ -42,12 +42,12 @@ class Model_Owm extends Model {
 
 		if($json) return $json;
 
-		echo "caching" . $apiUrl;
+		//echo "caching" . $apiUrl;
 
 		$json = json_decode(file_get_contents($apiUrl), true);
 		$mem->set($apiUrl, $json, MEMCACHE_COMPRESSED, 60*10);
 
-		die("cache done");
+		//die("cache done");
 
 		return $json;
 	}
