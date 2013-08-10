@@ -17,7 +17,7 @@ class Controller_Location extends Controller {
 
 		$this->getLocationData();
 
-		echo $this->weather['weather'][0]['icon'];
+		echo $this->weather['weather'][0]['icon'] . "\n";
 
 		$this->weatherType = $this->config['weatherTypes'][$this->weather['weather'][0]['icon']];
 		$this->htmlClassList[] = 'type'.ucfirst($this->weatherType['class']);

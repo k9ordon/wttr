@@ -66,7 +66,7 @@ class Model_Flickrphotos extends Model {
 				'text' => $query
 			)
 		);
-		echo '<br>'.$apiUrl.'<br>';
+		//echo '<br>'.$apiUrl.'<br>';
 
 		$mem = $this->getMemcache();
 		$string = $mem->get($apiUrl);
