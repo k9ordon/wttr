@@ -1,8 +1,11 @@
 <div id="footer">
 	<p>handcrafted by 
 	<a href="#">k9ordon</a> - 
-	powered by <a href="http://openweathermap.org">openweathermap api</a> - 
-	image from <a target="_blank" href="<?=sprintf('http://www.flickr.com/photos/%s/%s',$this->randomPhoto['owner'],$this->randomPhoto['id'])?>" title="">flickr</a>
+	powered by <a href="http://openweathermap.org">openweathermap api</a>
+
+	<? if($this->randomPhoto) : ?>
+	- image from <a target="_blank" href="<?=sprintf('http://www.flickr.com/photos/%s/%s',$this->randomPhoto['owner'],$this->randomPhoto['id'])?>" title="">flickr</a>
+	<? endif; ?>
 	- <?=date('Y')?>
 </div>
 </div>
