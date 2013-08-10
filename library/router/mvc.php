@@ -23,20 +23,22 @@ class Router_Mvc {
 
 		
 		// controller
-		$this->controllerName = 'Controller_' . (array_key_exists(1, $this->urlParts) && !empty($this->urlParts[1]) ? $this->urlParts[1] : $this->config['defaultControllerName']);
-		
+		// $this->controllerName = 'Controller_' . (array_key_exists(1, $this->urlParts) && !empty($this->urlParts[1]) ? $this->urlParts[1] : $this->config['defaultControllerName']);
+		$this->controllerName = 'Controller_' . $this->config['defaultControllerName'];
+
 		//var_dump($this->controllerName);exit;
 
 		$this->controller = new $this->controllerName;
 
 		$this->controller->config = $this->config;
 		$this->controller->router = $this;
-		//$this->controller->l = new Localizer($this->country['lang']);
 
 		$this->controller->init();
 
 		// action
-		$this->actionName = 'Action_' . (array_key_exists(2, $this->urlParts) && !empty($this->urlParts[2]) ? $this->urlParts[2] : $this->config['defaultActionName']);
+		// $this->actionName = 'Action_' . (array_key_exists(2, $this->urlParts) && !empty($this->urlParts[2]) ? $this->urlParts[2] : $this->config['defaultActionName']);
+		$this->actionName = 'Action_' . (array_key_exists(1, $this->urlParts) && !empty($this->urlParts[1]) ? $this->urlParts[1] : $this->config['defaultActionName']);
+
 		$c = $this->controller;
 		$a = $this->actionName;
 
