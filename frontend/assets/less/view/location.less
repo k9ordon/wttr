@@ -1,5 +1,5 @@
 @fewcloudsRgb : rgb(190,190,190);
-@fewcloudsRgba : rgba(190,190,190,0.5);
+@fewcloudsRgba : rgba(190,190,190,0.9);
 
 @FewcloudsColor : white;
 
@@ -35,7 +35,7 @@
 
 	&.typeSunny {
 		#backgroundImage, nav#main-nav_ {
-			background-color:#F8C48B;
+			background-color:#FFE545;
 		}
 		
 	}
@@ -85,9 +85,9 @@
 
 	#locationWrap {
 		position: absolute;
-		bottom:0;
-		left:0;
-		right:0;
+		bottom:10px;
+		left:10px;
+		right:10px;
 		z-index: 120;
 		//width:640px;
 		max-width: 100%;
@@ -146,16 +146,27 @@
 		}
 
 		.hourForeacast, .dayForecast {
-			//overflow: scroll; 
+			overflow: hidden;
+			overflow-x: scroll; 
 			width: 100%;
 
 			.hourChart {
+				position: relative;
 				border: 0px solid rgba(255,255,255,0.5);
 				border-width:0 0 0 0;
-				position: absolute;
-				top:140px;
+				top:156px;
 				z-index: 10;
+				margin-top:-190px;
+				padding:5px 0;
+				//border:1px solid red;
+
 				//display: none;
+
+				svg {
+					top:0;
+					position: absolute!important;
+					left:77px;
+				}
 			}
 			
 			.detail { 
@@ -163,11 +174,13 @@
 
 				border: 0px solid rgba(255,255,255,0.5);
 				border-width:0px 0 0px 0;
-				margin: 10px auto 0;
+				margin: 0 auto 0;
 				white-space: nowrap;
 
 				position: relative;
 				z-index: 80;
+
+				white-space: nowrap;
 
 				.clearfix();
 
@@ -180,12 +193,27 @@
 					font-size: 18px;
 					line-height: 20px;
 					
-					width:14.28%;
+					width:160px;
 
-					float:left;
+					//float:left;
+
+					&.hasData {
+					}
+
+					&.noData {
+						opacity: 0.8;
+						color:gray;
+					}
+
+					&.active {
+						.pin .icon {
+							border-color:white;
+						}
+					}
 
 					&:last-child {
 						border-width:0;
+						margin-right: 400px;
 					};
 
 					&:first-child .icon {
@@ -196,8 +224,7 @@
 						//border: 1px solid red;
 						width:120px;
 						white-space: normal;
-						color:black;
-						text-shadow:none;
+						//text-shadow:none;
 						position: relative;
 						padding:0 0 0;
 						//background: white;
@@ -229,7 +256,7 @@
 							border:3px solid transparent;
 
 							&.clear {
-								background: orange;
+								background: #FFE545;
 								color:white;
 							}
 
@@ -239,12 +266,12 @@
 							} 
 
 							&.cloudy {
-								background: rgba(110,110,110,0.5);
+								background: rgba(110,110,110,0.8);
 								color:white;
 							}
 
 							&.brokenclouds {
-								background: rgba(80,80,80,0.5);
+								background: rgba(80,80,80,0.8);
 								color:white;
 							}
 
@@ -254,7 +281,7 @@
 							}
 
 							&.moon {
-								background: rgba(0,0,0,0.5);
+								background: rgba(0,0,0,0.8);
 								color: white;
 							}
 						}
@@ -268,12 +295,11 @@
 							padding:1px 3px;
 							font-size: 18px;
 							line-height: 20px;
-							color:white;
-							font-weight: 100;
+							font-weight: 400;
 						}
 
 						> .time {
-							//margin:0 25px;
+							margin:0 5px;
 						}
 
 						> .temp {
@@ -288,8 +314,20 @@
 			}
 		}
 
-		.dayForecast {
+		.hourForecast {
+			.hourChart {
+			}
+			.detail { 
+				.day { 
+					.pin {
+						.icon {
+						}
+					}
+				}
+			}
+		}
 
+		.dayForecast {
 			.forecastChart {
 				display: none;
 			}
@@ -297,7 +335,7 @@
 				border-width:1px 0 0;
 
 				.day { 
-					width: 7.14%;
+					width: 90px;
 					.pin {
 						width: 50px;
 						.icon {

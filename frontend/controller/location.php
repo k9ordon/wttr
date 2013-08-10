@@ -36,6 +36,8 @@ class Controller_Location extends Controller {
 		
 		$this->weather = $Model_Owm->getWeather();
 		$this->hours = $Model_Owm->getHours();
+		$this->lastHourDate = $this->hours['list'][count($this->hours['list'])-1]['dt'];
+		
 		$this->days = $Model_Owm->getDays();
 
 		//var_dump($this->days);exit;
@@ -79,10 +81,10 @@ class Controller_Location extends Controller {
 			'clouds' => array()
 
 		);
-		foreach(array_slice($this->hours['list'], 0, 7) as $idx => $hour) {
+		foreach(array_slice($this->hours['list'], 0) as $idx => $hour) {
 			@$hour['main']['temp'] ? array_push($array['temp'], array($idx, $hour['main']['temp'])) : false;
-			@$hour['rain']['3h'] ? array_push($array['rain'], array($idx, $hour['rain']['3h'])) : false;
-			@$hour['clouds']['all'] ? array_push($array['clouds'], array($idx, $hour['clouds']['all'])) : false;
+			@$hour['rain']['3h'] ? array_push($array['rain'], array($idx, $hour['rain']['3h']*3)) : 0;
+			@$hour['clouds']['all'] ? array_push($array['clouds'], array($idx, $hour['clouds']['all']/15)) : false;
 		}
 
 		$this->hourGraphJson = json_encode($array);

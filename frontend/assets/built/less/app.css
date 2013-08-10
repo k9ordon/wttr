@@ -82,7 +82,7 @@ nav#main-nav #location {
 }
 #location.typeSunny #backgroundImage,
 #location.typeSunny nav#main-nav_ {
-  background-color: #F8C48B;
+  background-color: #FFE545;
 }
 #location.typeMoon #backgroundImage,
 #location.typeMoon nav#main-nav_ {
@@ -113,9 +113,9 @@ nav#main-nav #location {
 }
 #location #locationWrap {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
   z-index: 120;
   max-width: 100%;
   color: white;
@@ -163,25 +163,35 @@ nav#main-nav #location {
 }
 #location #locationWrap .hourForeacast,
 #location #locationWrap .dayForecast {
+  overflow: hidden;
+  overflow-x: scroll;
   width: 100%;
 }
 #location #locationWrap .hourForeacast .hourChart,
 #location #locationWrap .dayForecast .hourChart {
+  position: relative;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 0 0;
-  position: absolute;
-  top: 140px;
+  top: 156px;
   z-index: 10;
+  margin-top: -190px;
+  padding: 5px 0;
+}
+#location #locationWrap .hourForeacast .hourChart svg,
+#location #locationWrap .dayForecast .hourChart svg {
+  top: 0;
+  position: absolute!important;
+  left: 77px;
 }
 #location #locationWrap .hourForeacast .detail,
 #location #locationWrap .dayForecast .detail {
   text-align: center;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0px 0 0px 0;
-  margin: 10px auto 0;
-  white-space: nowrap;
+  margin: 0 auto 0;
   position: relative;
   z-index: 80;
+  white-space: nowrap;
   zoom: 1;
 }
 #location #locationWrap .hourForeacast .detail:before,
@@ -204,14 +214,27 @@ nav#main-nav #location {
   padding: 10px 20px;
   font-size: 18px;
   line-height: 20px;
-  width: 14.28%;
-  float: left;
+  width: 160px;
+}
+#location #locationWrap .hourForeacast .detail .hour.noData,
+#location #locationWrap .dayForecast .detail .hour.noData,
+#location #locationWrap .hourForeacast .detail .day.noData,
+#location #locationWrap .dayForecast .detail .day.noData {
+  opacity: 0.8;
+  color: gray;
+}
+#location #locationWrap .hourForeacast .detail .hour.active .pin .icon,
+#location #locationWrap .dayForecast .detail .hour.active .pin .icon,
+#location #locationWrap .hourForeacast .detail .day.active .pin .icon,
+#location #locationWrap .dayForecast .detail .day.active .pin .icon {
+  border-color: white;
 }
 #location #locationWrap .hourForeacast .detail .hour:last-child,
 #location #locationWrap .dayForecast .detail .hour:last-child,
 #location #locationWrap .hourForeacast .detail .day:last-child,
 #location #locationWrap .dayForecast .detail .day:last-child {
   border-width: 0;
+  margin-right: 400px;
 }
 #location #locationWrap .hourForeacast .detail .hour .pin,
 #location #locationWrap .dayForecast .detail .hour .pin,
@@ -219,8 +242,6 @@ nav#main-nav #location {
 #location #locationWrap .dayForecast .detail .day .pin {
   width: 120px;
   white-space: normal;
-  color: black;
-  text-shadow: none;
   position: relative;
   padding: 0 0 0;
 }
@@ -268,28 +289,28 @@ nav#main-nav #location {
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.clear,
 #location #locationWrap .hourForeacast .detail .day .pin > .icon.clear,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.clear {
-  background: orange;
+  background: #FFE545;
   color: white;
 }
 #location #locationWrap .hourForeacast .detail .hour .pin > .icon.fewclouds,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.fewclouds,
 #location #locationWrap .hourForeacast .detail .day .pin > .icon.fewclouds,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.fewclouds {
-  background: rgba(190, 190, 190, 0.5);
+  background: rgba(190, 190, 190, 0.9);
   color: white;
 }
 #location #locationWrap .hourForeacast .detail .hour .pin > .icon.cloudy,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.cloudy,
 #location #locationWrap .hourForeacast .detail .day .pin > .icon.cloudy,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.cloudy {
-  background: rgba(110, 110, 110, 0.5);
+  background: rgba(110, 110, 110, 0.8);
   color: white;
 }
 #location #locationWrap .hourForeacast .detail .hour .pin > .icon.brokenclouds,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.brokenclouds,
 #location #locationWrap .hourForeacast .detail .day .pin > .icon.brokenclouds,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.brokenclouds {
-  background: rgba(80, 80, 80, 0.5);
+  background: rgba(80, 80, 80, 0.8);
   color: white;
 }
 #location #locationWrap .hourForeacast .detail .hour .pin > .icon.rain,
@@ -303,7 +324,7 @@ nav#main-nav #location {
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.moon,
 #location #locationWrap .hourForeacast .detail .day .pin > .icon.moon,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.moon {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   color: white;
 }
 #location #locationWrap .hourForeacast .detail .hour .pin > .time,
@@ -316,12 +337,16 @@ nav#main-nav #location {
 #location #locationWrap .dayForecast .detail .day .pin > .temp {
   display: inline-block;
   border-width: 0 0 1px 0;
-  font-weight: 400;
   padding: 1px 3px;
   font-size: 18px;
   line-height: 20px;
-  color: white;
-  font-weight: 100;
+  font-weight: 400;
+}
+#location #locationWrap .hourForeacast .detail .hour .pin > .time,
+#location #locationWrap .dayForecast .detail .hour .pin > .time,
+#location #locationWrap .hourForeacast .detail .day .pin > .time,
+#location #locationWrap .dayForecast .detail .day .pin > .time {
+  margin: 0 5px;
 }
 #location #locationWrap .dayForecast .forecastChart {
   display: none;
@@ -330,7 +355,7 @@ nav#main-nav #location {
   border-width: 1px 0 0;
 }
 #location #locationWrap .dayForecast .detail .day {
-  width: 7.14%;
+  width: 90px;
 }
 #location #locationWrap .dayForecast .detail .day .pin {
   width: 50px;

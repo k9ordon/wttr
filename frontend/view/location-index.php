@@ -25,21 +25,21 @@ $this->randomPhoto['secret'])
 	<?//=$this->weather['weather'][0]['main']?>
 
 	<div class="hourForeacast">
-		<div class="hourChart" style="height:190px; width:100%"></div>
+		<div class="hourChart" style="height:180px; width:<?=160*count($this->hours['list'])?>px"></div>
 		<script>var hourChartData = JSON.parse('<?=$this->hourGraphJson;?>');</script>
 
 		<div class="detail">
-			<? foreach(array_slice($this->hours['list'], 0, 7) as $hour) : ?>
+			<? foreach(array_slice($this->hours['list'], 0) as $hour) : ?>
 			<? $hourWeatherType = $this->config['weatherTypes'][$hour['weather'][0]['icon']]; ?>
 
-			<div class="hour">
+			<div class="hour" data-ts="<?=strtotime('00:00', $hour['dt'])?>">
 			<div class="pin">
 				<?//=$hour['weather'][0]['main']?>
 
 				<p class="icon <?=$hourWeatherType['class']?>"><span class="<?=$hourWeatherType['icon']?>"></span></p>
 				<p class="time"><?=$this->config['weekdaysShort'][date('w', $hour['dt'])]?> <?=date('H:i', $hour['dt'])?></p>
-				<p class="temp"><?=$hour['main']['temp']?>°C</p>
-				<!--<p class="rain"><?var_dump($hour['rain'])?></p>-->
+				<!--<p class="temp"><?=round($hour['main']['temp'])?><span class="icon-Celsius"></span></p>
+				<p class="rain"><?var_dump($hour['rain'])?></p>-->
 			</div>
 			</div>
 			<? endforeach; ?>
@@ -55,7 +55,7 @@ $this->randomPhoto['secret'])
 			<? foreach(array_slice($this->days['list'], 0, 14) as $idx => $day) : ?>
 			<? $dayWeatherType = $this->config['weatherTypes'][$day['weather'][0]['icon']]; ?>
 
-			<div class="day">
+			<div class="day <?=$idx == 0 ? 'active' : ''?> <?=$this->lastHourDate < $day['dt'] ? 'noData' : 'hasData'?>" data-ts="<?=strtotime('00:00', $day['dt'])?>">
 			<div class="pin">
 				<?//=$hour['weather'][0]['main']?>
 
