@@ -4,7 +4,7 @@ $config['base'] = 'http://'.$_SERVER['SERVER_NAME'] . '';
 $config['contentBase'] = $config['base'];
 
 $config['weekdays'] = array(
-	'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samastag'
+	'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'
 	);
 $config['weekdaysShort'] = array(
 	'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'
