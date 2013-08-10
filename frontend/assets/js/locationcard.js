@@ -45,7 +45,7 @@ p.createDayChart = function() {
 	    area_color: "#FFE545",//"230-#FC913A-#FFE545-#EDE574",
 	    area_opacity: 0,
 	    dot_size: 0,
-	    line_width: 1	  }
+	    line_width: 2	  }
     });
 
     c.add_line({
@@ -56,7 +56,7 @@ p.createDayChart = function() {
 	    area_color: "#81A8B8",//"230-#81A8B8-#A4BCC2-#C2CBCE-#DBE6EC-#E8F3F8",
 	    area_opacity: 0,
 	    dot_size: 0,
-	    line_width: 1
+	    line_width: 2
 	  }
     });
 /*
