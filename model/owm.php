@@ -21,35 +21,43 @@ class Model_Owm extends Model {
 	protected $apiBaseUrl = 'http://api.openweathermap.org/data/2.5/';
 	protected $apiDefaultParams = array('units'=>'metric','lang'=>'de', 'mode' => 'json');
 
-	protected $jsonString;
-	protected $array = null;
-
 	protected $city;
 
-	public function __construct($city = 2772400) {
-		$this->city = $city;
+	// 2772400 
+
+	public function __construct($placeQuery = 'Hawaii') {
+		$places = $this->loadPlace($placeQuery);
+//var_dump($places);exit;
+
+		$this->place = $places['list'][0];
+// var_dump($this->place);
 	}
 
+
+	public function loadPlace($query) {
+		$apiUrl = $this->apiUrl('find', array('q' => $query, 'type' => 'like'));
+
+		$mem = $this->getMemcache();
+		$json = $mem->get($apiUrl);
+
+		if($json) return $json;
+
+		echo "caching" . $apiUrl;
+
+		$json = json_decode(file_get_contents($apiUrl), true);
+		$mem->set($apiUrl, $json, MEMCACHE_COMPRESSED, 60*10);
+
+		die("cache done");
+
+		return $json;
+	}
+
+	public function getPlace() {
+		return $this->place;
+	}
 
 	public function getWeather() {
-		$weather = $this->apiRequest('weather', array('id' => $this->city));
-		return $weather;
-	}
-
-	public function getHours() {
-		return $this->apiRequest('forecast', array('id' => $this->city));
-	}
-
-	public function getDays() {
-		return $this->apiRequest('forecast/daily', array('id' => $this->city, 'cnt' => 16));
-	}
-
-	protected function apiRequest($method, $params = array()) {
-		$apiUrl = sprintf('%s%s?%s', 
-			$this->apiBaseUrl, 
-			$method, 
-			http_build_query(array_merge($this->apiDefaultParams, $params))
-		);
+		$apiUrl = $this->apiUrl('weather', array('id' => $this->place['id']));
 
 		$mem = $this->getMemcache();
 		$json = $mem->get($apiUrl);
@@ -66,35 +74,48 @@ class Model_Owm extends Model {
 		return $json;
 	}
 
-	public function parseWeather() {
-		$json = json_decode($this->jsonString, true);
-		//var_dump($json);exit;
+	public function getHours() {
+		$apiUrl = $this->apiUrl('forecast', array('id' => $this->place['id']));
 
-		$this->array = [];
+		$mem = $this->getMemcache();
+		$json = $mem->get($apiUrl);
 
+		if($json) return $json;
 
-		$today = [
-			'time' => null,
-			'type' => [
-				'name' => null,
-				'class' => null,
-			],
-			'temp' => 0,
-			'min' => 0,
-			'max' => 0,
-			'rain' => 0,
-			'detail' => [
-				['icon', 'type' => [], 'time', 'temp', 'rain']
-			]
-		];
+		//echo "caching" . $apiUrl;
 
-		$days = [
-			//'overview' 
-			'hours' => []
-		];
+		$json = json_decode(file_get_contents($apiUrl), true);
+		$mem->set($apiUrl, $json, MEMCACHE_COMPRESSED, 60*10);
 
+		//die("cache done");
 
-		return $this->array;
+		return $json;
+	}
+
+	public function getDays() {
+		$apiUrl = $this->apiUrl('forecast/daily', array('id' => $this->place['id'], 'cnt' => 16));
+
+		$mem = $this->getMemcache();
+		$json = $mem->get($apiUrl);
+
+		if($json) return $json;
+
+		//echo "caching" . $apiUrl;
+
+		$json = json_decode(file_get_contents($apiUrl), true);
+		$mem->set($apiUrl, $json, MEMCACHE_COMPRESSED, 60*10);
+
+		//die("cache done");
+
+		return $json;
+	}
+
+	protected function apiUrl($method, $params = array()) {
+		return sprintf('%s%s?%s', 
+			$this->apiBaseUrl, 
+			$method, 
+			http_build_query(array_merge($this->apiDefaultParams, $params))
+		);
 	}
 }
 
