@@ -1,3 +1,6 @@
 [submodule "frontend/assets/vendor/raphy-charts"]
 	path = frontend/assets/vendor/raphy-charts
 	url = git@github.com:jcarver989/raphy-charts.git
+[submodule "frontend/assets/vendor/TouchScroll"]
+	path = frontend/assets/vendor/TouchScroll
+	url = https://github.com/davidaurelio/TouchScroll.git
