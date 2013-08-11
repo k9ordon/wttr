@@ -24,7 +24,7 @@ $this->randomPhoto['secret'])
 
 	<?//=$this->weather['weather'][0]['main']?>
 
-	<div class="hourForeacast">
+	<div class="hourForecast">
 		<div class="hourChart" style="height:180px; width:<?=160*count($this->hours['list'])?>px"></div>
 		<script>var hourChartData = JSON.parse('<?=$this->hourGraphJson;?>');</script>
 
@@ -46,9 +46,9 @@ $this->randomPhoto['secret'])
 		</div>
 	</div>
 
-	<? /*<h3>Vorschau</h3> */ ?>
-
+	<h3 class="dayForecastHeader">14 Tage Prognose <span>&#11015;</span></h3>
 	<div class="dayForecast">
+
 		<div class="forecastChart" style="height:50px; width:640px"></div>
 		<div class="detail">
 
