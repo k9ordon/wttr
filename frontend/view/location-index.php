@@ -25,7 +25,7 @@ $this->randomPhoto['secret'])
 	<?//=$this->weather['weather'][0]['main']?>
 
 	<div class="hourForecast">
-		<div class="hourChart" style="height:180px; width:<?=160*count($this->hours['list'])?>px"></div>
+		<div class="hourChart" style="height:165px; width:<?=160*count($this->hours['list'])?>px"></div>
 		<script>var hourChartData = JSON.parse('<?=$this->hourGraphJson;?>');</script>
 
 		<div class="detail">
@@ -55,7 +55,7 @@ $this->randomPhoto['secret'])
 			<? foreach(array_slice($this->days['list'], 0, 14) as $idx => $day) : ?>
 			<? $dayWeatherType = $this->config['weatherTypes'][$day['weather'][0]['icon']]; ?>
 
-			<div class="day <?=$idx == 0 ? 'active' : ''?> <?=$this->lastHourDate < $day['dt'] ? 'noData' : 'hasData'?>" data-ts="<?=strtotime('00:00', $day['dt'])?>">
+			<div class="day <?=$this->lastHourDate < $day['dt'] ? 'noData' : 'hasData'?>" data-ts="<?=strtotime('00:00', $day['dt'])?>">
 			<div class="pin">
 				<?//=$hour['weather'][0]['main']?>
 

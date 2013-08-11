@@ -10,7 +10,11 @@
 </div>
 </div>
 
-<? foreach(array("assets/vendor/raphy-charts/vendor/raphael.min.js", "assets/vendor/raphy-charts/compiled/charts.js") as $s) : ?>
+<? foreach(array(
+	"assets/vendor/raphy-charts/vendor/raphael.min.js", 
+	"assets/vendor/raphy-charts/compiled/charts.js", 
+	"assets/vendor/TouchScroll/dist/touchscroll.min.js"
+	) as $s) : ?>
 	<script type="text/javascript" src="<?=$s?>"></script>
 <? endforeach; ?>
 

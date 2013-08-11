@@ -2,6 +2,8 @@
 
 @import "../../vendor/reset.css";
 
+@import "../../vendor/TouchScroll/src/touchscroll.css";
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500);
 * {
   -moz-box-sizing: border-box;
@@ -49,15 +51,17 @@ nav#main-nav #location {
   font-weight: 400;
 }
 #footer {
-  position: fixed;
-  top: 25px;
+  position: absolute;
+  top: 15px;
+  line-height: 25px;
   z-index: 200;
   color: #f0f0f0;
   font-size: 12px;
   font-weight: 400;
   text-align: right;
-  left: 6%;
+  left: 20px;
   right: 20px;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8), 0px 1px 10px rgba(0, 0, 0, 0.3);
 }
 #footer a {
   color: #ffffff;
@@ -177,7 +181,6 @@ nav#main-nav #location {
 #location #locationWrap .hourForecast,
 #location #locationWrap .dayForecast {
   overflow: hidden;
-  overflow-x: scroll;
   width: 100%;
 }
 #location #locationWrap .hourForecast .hourChart,
@@ -185,9 +188,7 @@ nav#main-nav #location {
   position: relative;
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 1px 0;
-  top: 156px;
   z-index: 10;
-  margin-top: -190px;
   padding: 5px 0;
 }
 #location #locationWrap .hourForecast .hourChart svg,
@@ -364,6 +365,13 @@ nav#main-nav #location {
 #location #locationWrap .hourForecast {
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-width: 0 0 1px 0;
+  height: 160px;
+  position: relative;
+  cursor: col-resize;
+}
+#location #locationWrap .hourForecast .hourChart {
+  position: absolute;
+  top: 0;
 }
 #location #locationWrap .hourForecast .detail {
   -webkit-transform-style: preserve-3d;
@@ -405,6 +413,9 @@ nav#main-nav #location {
 }
 #location #locationWrap .dayForecast .detail .day.hasData:hover {
   background: rgba(0, 0, 0, 0.2);
+}
+#location #locationWrap .dayForecast .detail .day.hasData:hover .icon {
+  border-color: white;
 }
 #location #locationWrap .dayForecast .detail .day .pin {
   pointer-events: none;

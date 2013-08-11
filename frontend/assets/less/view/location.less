@@ -151,16 +151,16 @@
 
 		.hourForecast, .dayForecast {
 			overflow: hidden;
-			overflow-x: scroll; 
+			//overflow-x: scroll; 
 			width: 100%;
 
 			.hourChart {
 				position: relative;
 				border: 0px solid rgba(255,255,255,0.5);
 				border-width:0 0 1px 0;
-				top:156px;
+				//top:156px;
 				z-index: 10;
-				margin-top:-190px;
+				//margin-top:-190px;
 				padding:5px 0;
 				//border:1px solid red;
 
@@ -321,9 +321,17 @@
 		.hourForecast {
 			border: 0px solid rgba(255,255,255,0.5);
 			border-width:0 0 1px 0;
+			height: 160px;
+			//overflow: auto;
+			position: relative;
+			cursor:col-resize;
+
+
 			.hourChart {
+				position: absolute;
+				top:0;
 			}
-			.detail { 
+			.detail {
 				-webkit-transform-style: preserve-3d;
 				-webkit-transition: -webkit-transform 0.5s ease;
 				-webkit-transform: translate(0, 0);
@@ -377,6 +385,9 @@
 
 					&.hasData { &:hover {
 						background: rgba(0,0,0,0.2);
+						.icon {
+							border-color:white;
+						}
 					} }
 
 					width: 90px;

@@ -38,7 +38,10 @@ p.events = function() {
 	document.addEventListener('scroll', function() {
 		p.scrollHandler();
 	});
+
 	p.scrollHandler();
+
+	var scroller = new TouchScroll(this.$hourForecast, {elastic: true});
 }
 
 p.scrollHandler = function() {
@@ -80,13 +83,23 @@ p.setHoursScroll = function(queryts, $activeEl) {
 	for(var i = 0; i < this.$hours.length; i++) {
 		var ts = this.$hours[i].getAttribute('data-ts');
 		if(ts >= queryts) {
+			
 			this.hourScrollLeft = this.$hours[i].offsetLeft;
-
+			/*
 			var diff = this.$hourForecast.scrollLeft - this.hourScrollLeft,
 				$detail = this.$hourForecast.querySelector('.detail');
 				
 			$detail.style.webkitTransform = "translate("+diff+"px, 0)";
 			$detail.addEventListener('webkitTransitionEnd', p.onHourScrollAnimationEnd, false);
+
+			return true;
+			*/
+
+			var $scroll = this.$hourForecast.querySelector('.touchScrollInner'),
+				vars = $scroll.style.webkitTransform.match(/[^()\s]+(?=,|\))/g);
+
+			$scroll.style.webkitTransform = "translate(-"+this.hourScrollLeft+"px, 0px)";
+			//console.log(vars[0]);
 
 			return true;
 		}
