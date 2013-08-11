@@ -50,6 +50,8 @@ p.hoursOnScroll = function(offsetLeft) {
 }
 
 p.setHoursScroll = function(queryts, $activeEl) {
+	document.body.scrollTop = 300;
+	
 	for(var i = 0; i < this.$hours.length; i++) {
 		var ts = this.$hours[i].getAttribute('data-ts');
 		if(ts >= queryts) return this.$hourForeacast.scrollLeft = this.$hours[i].offsetLeft;
