@@ -55,7 +55,7 @@ class Model_Flickrphotos extends Model {
 		$apiUrl = $this->apiUrl(
 			'flickr.photos.search', 
 			array(
-				'tag_mode' => 'all', 
+				//'tag_mode' => 'all', 
 				//'sort' => 'int',
 				'sort' => 'interestingness-desc', 
 				'place_id' => $this->place['place_id'], 

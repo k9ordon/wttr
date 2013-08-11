@@ -35,7 +35,7 @@ $config['weatherTypes'] = array(
 		'name' => 'Leicht Bewölkt', 
 		'class' => 'fewclouds', 
 		//'flickrsearch' => urlencode('cloudy -night'),
-		'flickrtag' => 'cloudy,-night,-nacht',
+		'flickrsearch' => urlencode('wolken clouds'),
 		//'flickrsearch' => urlencode('-art -instagram cloudy OR bewölkt OR wolken OR clouds -night -nacht -mond -moon -gewitter -regen'),
 		//'flickrtag' => '-night,-nacht',
 		'icon' => 'icon-cloudy'),
@@ -50,14 +50,12 @@ $config['weatherTypes'] = array(
 
 	'03d' => array(
 		'name' => 'Bewölkt', 
-		'class' => 'cloudy', 
-		'flickrsearch' => urlencode('(-art -instagram) AND (cloudy OR bewölkt OR wolken OR clouds) AND (-night -nacht -mond -moon -gewitter -regen)'),
-		'icon' => 'icon-cloud-2'),
+		'class' => 'cloudy', 		'icon' => 'icon-cloud-2'),
 
 	'03n' => array(
 		'name' => 'Bewölkt', 
 		'class' => 'moon', 
-		'flickrtag' => 'night',
+		'flickrsearch' => urlencode('night nacht'),
 		'icon' => 'icon-moon'),
 
 	// stark bewölkt
@@ -65,12 +63,12 @@ $config['weatherTypes'] = array(
 	'04d' => array(
 		'name' => 'Stark Bewölkt', 
 		'class' => 'brokenclouds', 
-		'flickrsearch' => urlencode('-art -instagram cloudy OR bewölkt OR wolken OR clouds -night -nacht -mond -moon'),
+		'flickrsearch' => urlencode('wolken clouds'),
 		'icon' => 'icon-cloudy-2'),
 	'04n' => array(
 		'name' => 'Stark Bewölkt', 
 		'class' => 'moon', 
-		'flickrtag' => 'night',
+		'flickrsearch' => urlencode('night nacht'),
 		'icon' => 'icon-cloudy-2'),
 
 
@@ -79,12 +77,12 @@ $config['weatherTypes'] = array(
 	'09d' => array(
 		'name' => 'Regen Schauer', 
 		'class' => 'showerrain', 
-		'flickrtag' => 'rain',
+		'flickrsearch' => urlencode('rain rain'),
 		'icon' => 'icon-rainy'),
 	'09n' => array(
 		'name' => 'Regen Schauer', 
 		'class' => 'moon', 
-		'flickrtag' => 'night',
+		'flickrsearch' => urlencode('night nacht'),
 		'icon' => 'icon-moon'),
 
 	// regen
@@ -92,12 +90,12 @@ $config['weatherTypes'] = array(
 	'10d' => array(
 		'name' => 'Regen', 
 		'class' => 'rain', 
-		'flickrtag' => 'rain',
+		'flickrsearch' => urlencode('rain rain'),
 		'icon' => 'icon-rainy'),
 	'10n' => array(
 		'name' => 'Regen', 
 		'class' => 'moon', 
-		'flickrtag' => 'night',
+		'flickrsearch' => urlencode('night nacht'),
 		'icon' => 'icon-rainy'),
 
 
@@ -106,12 +104,12 @@ $config['weatherTypes'] = array(
 	'11d' => array(
 		'name' => 'Gewitter', 
 		'class' => 'lightning', 
-		'flickrtag' => 'lightning',
+		'flickrsearch' => urlencode('gewitter thunderstorm'),
 		'icon' => 'icon-lightning'),
 
 	'11n' => array(
 		'name' => 'Gewitter', 
-		'class' => 'lightning', 
-		'flickrtag' => 'lightning',
+		'class' => 'moon', 
+		'flickrsearch' => urlencode('gewitter thunderstorm'),
 		'icon' => 'icon-lightning'),
 );
