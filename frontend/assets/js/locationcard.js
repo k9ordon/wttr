@@ -1,11 +1,17 @@
 var locationCard = function() {
-		this.$hourForeacast = document.querySelector('.hourForeacast');
+		this.$hourForecast = document.querySelector('.hourForecast');
+		this.$dayForeacast = document.querySelector('.dayForecast');
 
-		this.$hourChart = document.querySelector('.hourForeacast .hourChart');
+		this.$dayForeacastHeader = document.querySelector('.dayForecastHeader');
+
+
+		this.$hourChart = document.querySelector('.hourForecast .hourChart');
 		this.$forecastChart = document.querySelector('#forecast .forecastChart');
 
 		this.$hours = document.querySelectorAll('.hour');
 		this.$days = document.querySelectorAll('.day.hasData');
+
+		this.hourScrollLeft = 0;
 
 	},
 	p = locationCard.prototype;
@@ -25,9 +31,28 @@ p.events = function() {
 		});
 	}
 
-	this.$hourForeacast.addEventListener('scroll', function() {
+	this.$hourForecast.addEventListener('scroll', function() {
 		p.hoursOnScroll(this.scrollLeft - 50);
 	});
+
+	document.addEventListener('scroll', function() {
+		p.scrollHandler();
+	});
+	p.scrollHandler();
+}
+
+p.scrollHandler = function() {
+	var scrollTop = document.body.scrollTop;
+
+	//console.log(['crollHandler', p, this, this.$dayForeacast]);
+
+	if(scrollTop > 40) {
+		this.$dayForeacast.classList.add('show');
+		this.$dayForeacastHeader.classList.add('shown');
+	} else {
+		this.$dayForeacast.classList.remove('show');
+		//this.$dayForeacastHeader.classList.remove('shown');
+	}
 }
 
 p.hoursOnScroll = function(offsetLeft) {
@@ -35,7 +60,6 @@ p.hoursOnScroll = function(offsetLeft) {
 		var $hour = this.$hours[i];
 
 		if($hour.offsetLeft >= offsetLeft) {
-			
 			// get day
 			for(var i = 0; i < this.$days.length; i++) {
 				if(this.$days[i].getAttribute('data-ts') == $hour.getAttribute('data-ts'))
@@ -51,11 +75,36 @@ p.hoursOnScroll = function(offsetLeft) {
 
 p.setHoursScroll = function(queryts, $activeEl) {
 	document.body.scrollTop = 300;
-	
+	var p = this;
+
 	for(var i = 0; i < this.$hours.length; i++) {
 		var ts = this.$hours[i].getAttribute('data-ts');
-		if(ts >= queryts) return this.$hourForeacast.scrollLeft = this.$hours[i].offsetLeft;
+		if(ts >= queryts) {
+			this.hourScrollLeft = this.$hours[i].offsetLeft;
+
+			var diff = this.$hourForecast.scrollLeft - this.hourScrollLeft,
+				$detail = this.$hourForecast.querySelector('.detail');
+				
+			$detail.style.webkitTransform = "translate("+diff+"px, 0)";
+			$detail.addEventListener('webkitTransitionEnd', p.onHourScrollAnimationEnd, false);
+
+			return true;
+		}
 	}
+}
+
+p.onHourScrollAnimationEnd = function() {
+	var $detail = _locationCard.$hourForecast.querySelector('.detail');
+
+	$detail.classList.add('noTransistion');
+	$detail.removeEventListener('webkitTransitionEnd', this.onHourScrollAnimationEnd);
+	_locationCard.$hourForecast.scrollLeft = _locationCard.hourScrollLeft;
+	$detail.style.webkitTransform = "translate(0, 0)";
+	
+	setTimeout(function() {
+		$detail.classList.remove('noTransistion');
+	}, 1);
+
 }
 
 p.createChart = function() {

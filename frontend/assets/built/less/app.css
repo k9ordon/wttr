@@ -8,6 +8,9 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 body {
   background-color: #d3d3d3;
 }
@@ -61,6 +64,15 @@ nav#main-nav #location {
   text-decoration: none;
   font-weight: 800;
 }
+#location {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
 #location #backgroundImage {
   position: fixed;
   z-index: 100;
@@ -113,7 +125,7 @@ nav#main-nav #location {
 }
 #location #locationWrap {
   position: absolute;
-  bottom: -102px;
+  bottom: -95px;
   left: 10px;
   right: 10px;
   z-index: 120;
@@ -124,6 +136,7 @@ nav#main-nav #location {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.9)));
   /* Chrome,Safari4+ */
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8), 0px 1px 10px rgba(0, 0, 0, 0.3);
+  -webkit-perspective: 500;
 }
 #location #locationWrap h1 {
   font-size: 60px;
@@ -161,29 +174,29 @@ nav#main-nav #location {
 #location #locationWrap h3 {
   font-weight: 200;
 }
-#location #locationWrap .hourForeacast,
+#location #locationWrap .hourForecast,
 #location #locationWrap .dayForecast {
   overflow: hidden;
   overflow-x: scroll;
   width: 100%;
 }
-#location #locationWrap .hourForeacast .hourChart,
+#location #locationWrap .hourForecast .hourChart,
 #location #locationWrap .dayForecast .hourChart {
   position: relative;
   border: 0px solid rgba(255, 255, 255, 0.5);
-  border-width: 0 0 0 0;
+  border-width: 0 0 1px 0;
   top: 156px;
   z-index: 10;
   margin-top: -190px;
   padding: 5px 0;
 }
-#location #locationWrap .hourForeacast .hourChart svg,
+#location #locationWrap .hourForecast .hourChart svg,
 #location #locationWrap .dayForecast .hourChart svg {
   top: 0;
   position: absolute!important;
   left: 77px;
 }
-#location #locationWrap .hourForeacast .detail,
+#location #locationWrap .hourForecast .detail,
 #location #locationWrap .dayForecast .detail {
   text-align: center;
   border: 0px solid rgba(255, 255, 255, 0.5);
@@ -194,20 +207,20 @@ nav#main-nav #location {
   white-space: nowrap;
   zoom: 1;
 }
-#location #locationWrap .hourForeacast .detail:before,
+#location #locationWrap .hourForecast .detail:before,
 #location #locationWrap .dayForecast .detail:before {
   content: '';
   display: block;
 }
-#location #locationWrap .hourForeacast .detail:after,
+#location #locationWrap .hourForecast .detail:after,
 #location #locationWrap .dayForecast .detail:after {
   content: '';
   display: table;
   clear: both;
 }
-#location #locationWrap .hourForeacast .detail .hour,
+#location #locationWrap .hourForecast .detail .hour,
 #location #locationWrap .dayForecast .detail .hour,
-#location #locationWrap .hourForeacast .detail .day,
+#location #locationWrap .hourForecast .detail .day,
 #location #locationWrap .dayForecast .detail .day {
   display: inline-block;
   border: 0px solid rgba(255, 255, 255, 0.5);
@@ -216,38 +229,38 @@ nav#main-nav #location {
   line-height: 20px;
   width: 160px;
 }
-#location #locationWrap .hourForeacast .detail .hour.noData,
+#location #locationWrap .hourForecast .detail .hour.noData,
 #location #locationWrap .dayForecast .detail .hour.noData,
-#location #locationWrap .hourForeacast .detail .day.noData,
+#location #locationWrap .hourForecast .detail .day.noData,
 #location #locationWrap .dayForecast .detail .day.noData {
   opacity: 0.8;
   color: gray;
 }
-#location #locationWrap .hourForeacast .detail .hour.active .pin .icon,
+#location #locationWrap .hourForecast .detail .hour.active .pin .icon,
 #location #locationWrap .dayForecast .detail .hour.active .pin .icon,
-#location #locationWrap .hourForeacast .detail .day.active .pin .icon,
+#location #locationWrap .hourForecast .detail .day.active .pin .icon,
 #location #locationWrap .dayForecast .detail .day.active .pin .icon {
   border-color: white;
 }
-#location #locationWrap .hourForeacast .detail .hour:last-child,
+#location #locationWrap .hourForecast .detail .hour:last-child,
 #location #locationWrap .dayForecast .detail .hour:last-child,
-#location #locationWrap .hourForeacast .detail .day:last-child,
+#location #locationWrap .hourForecast .detail .day:last-child,
 #location #locationWrap .dayForecast .detail .day:last-child {
   border-width: 0;
   margin-right: 400px;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin,
+#location #locationWrap .hourForecast .detail .hour .pin,
 #location #locationWrap .dayForecast .detail .hour .pin,
-#location #locationWrap .hourForeacast .detail .day .pin,
+#location #locationWrap .hourForecast .detail .day .pin,
 #location #locationWrap .dayForecast .detail .day .pin {
   width: 120px;
   white-space: normal;
   position: relative;
   padding: 0 0 0;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin:before,
+#location #locationWrap .hourForecast .detail .hour .pin:before,
 #location #locationWrap .dayForecast .detail .hour .pin:before,
-#location #locationWrap .hourForeacast .detail .day .pin:before,
+#location #locationWrap .hourForecast .detail .day .pin:before,
 #location #locationWrap .dayForecast .detail .day .pin:before {
   content: '';
   position: absolute;
@@ -256,24 +269,24 @@ nav#main-nav #location {
   bottom: -54px;
   z-index: 0;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .icon,
+#location #locationWrap .hourForecast .detail .hour .pin > .icon,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon,
-#location #locationWrap .hourForeacast .detail .day .pin > .icon,
+#location #locationWrap .hourForecast .detail .day .pin > .icon,
 #location #locationWrap .dayForecast .detail .day .pin > .icon,
-#location #locationWrap .hourForeacast .detail .hour .pin > .time,
+#location #locationWrap .hourForecast .detail .hour .pin > .time,
 #location #locationWrap .dayForecast .detail .hour .pin > .time,
-#location #locationWrap .hourForeacast .detail .day .pin > .time,
+#location #locationWrap .hourForecast .detail .day .pin > .time,
 #location #locationWrap .dayForecast .detail .day .pin > .time,
-#location #locationWrap .hourForeacast .detail .hour .pin > .temp,
+#location #locationWrap .hourForecast .detail .hour .pin > .temp,
 #location #locationWrap .dayForecast .detail .hour .pin > .temp,
-#location #locationWrap .hourForeacast .detail .day .pin > .temp,
+#location #locationWrap .hourForecast .detail .day .pin > .temp,
 #location #locationWrap .dayForecast .detail .day .pin > .temp {
   position: relative;
   z-index: 10;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .icon,
+#location #locationWrap .hourForecast .detail .hour .pin > .icon,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon,
-#location #locationWrap .hourForeacast .detail .day .pin > .icon,
+#location #locationWrap .hourForecast .detail .day .pin > .icon,
 #location #locationWrap .dayForecast .detail .day .pin > .icon {
   display: inline-block;
   font-size: 48px;
@@ -285,55 +298,55 @@ nav#main-nav #location {
   color: gray;
   border: 3px solid transparent;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .icon.clear,
+#location #locationWrap .hourForecast .detail .hour .pin > .icon.clear,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.clear,
-#location #locationWrap .hourForeacast .detail .day .pin > .icon.clear,
+#location #locationWrap .hourForecast .detail .day .pin > .icon.clear,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.clear {
   background: #FFE545;
   color: white;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .icon.fewclouds,
+#location #locationWrap .hourForecast .detail .hour .pin > .icon.fewclouds,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.fewclouds,
-#location #locationWrap .hourForeacast .detail .day .pin > .icon.fewclouds,
+#location #locationWrap .hourForecast .detail .day .pin > .icon.fewclouds,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.fewclouds {
   background: rgba(190, 190, 190, 0.9);
   color: white;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .icon.cloudy,
+#location #locationWrap .hourForecast .detail .hour .pin > .icon.cloudy,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.cloudy,
-#location #locationWrap .hourForeacast .detail .day .pin > .icon.cloudy,
+#location #locationWrap .hourForecast .detail .day .pin > .icon.cloudy,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.cloudy {
   background: rgba(110, 110, 110, 0.8);
   color: white;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .icon.brokenclouds,
+#location #locationWrap .hourForecast .detail .hour .pin > .icon.brokenclouds,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.brokenclouds,
-#location #locationWrap .hourForeacast .detail .day .pin > .icon.brokenclouds,
+#location #locationWrap .hourForecast .detail .day .pin > .icon.brokenclouds,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.brokenclouds {
   background: rgba(80, 80, 80, 0.8);
   color: white;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .icon.rain,
+#location #locationWrap .hourForecast .detail .hour .pin > .icon.rain,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.rain,
-#location #locationWrap .hourForeacast .detail .day .pin > .icon.rain,
+#location #locationWrap .hourForecast .detail .day .pin > .icon.rain,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.rain {
   background: #81A8B8;
   color: white;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .icon.moon,
+#location #locationWrap .hourForecast .detail .hour .pin > .icon.moon,
 #location #locationWrap .dayForecast .detail .hour .pin > .icon.moon,
-#location #locationWrap .hourForeacast .detail .day .pin > .icon.moon,
+#location #locationWrap .hourForecast .detail .day .pin > .icon.moon,
 #location #locationWrap .dayForecast .detail .day .pin > .icon.moon {
   background: rgba(0, 0, 0, 0.8);
   color: white;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .time,
+#location #locationWrap .hourForecast .detail .hour .pin > .time,
 #location #locationWrap .dayForecast .detail .hour .pin > .time,
-#location #locationWrap .hourForeacast .detail .day .pin > .time,
+#location #locationWrap .hourForecast .detail .day .pin > .time,
 #location #locationWrap .dayForecast .detail .day .pin > .time,
-#location #locationWrap .hourForeacast .detail .hour .pin > .temp,
+#location #locationWrap .hourForecast .detail .hour .pin > .temp,
 #location #locationWrap .dayForecast .detail .hour .pin > .temp,
-#location #locationWrap .hourForeacast .detail .day .pin > .temp,
+#location #locationWrap .hourForecast .detail .day .pin > .temp,
 #location #locationWrap .dayForecast .detail .day .pin > .temp {
   display: inline-block;
   border-width: 0 0 1px 0;
@@ -342,22 +355,59 @@ nav#main-nav #location {
   line-height: 20px;
   font-weight: 400;
 }
-#location #locationWrap .hourForeacast .detail .hour .pin > .time,
+#location #locationWrap .hourForecast .detail .hour .pin > .time,
 #location #locationWrap .dayForecast .detail .hour .pin > .time,
-#location #locationWrap .hourForeacast .detail .day .pin > .time,
+#location #locationWrap .hourForecast .detail .day .pin > .time,
 #location #locationWrap .dayForecast .detail .day .pin > .time {
   margin: 0 5px;
+}
+#location #locationWrap .hourForecast {
+  border: 0px solid rgba(255, 255, 255, 0.5);
+  border-width: 0 0 1px 0;
+}
+#location #locationWrap .hourForecast .detail {
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  -webkit-transform: translate(0, 0);
+}
+#location #locationWrap .hourForecast .detail.noTransistion {
+  -webkit-transition: none!important;
+}
+#location #locationWrap h3.dayForecastHeader {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 38px;
+  margin-bottom: -38px;
+}
+#location #locationWrap h3.dayForecastHeader.shown span {
+  display: none;
+}
+#location #locationWrap .dayForecast {
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.4s ease-out;
+  -webkit-transform: rotateX(10deg);
+  -webkit-transform-origin: top;
+}
+#location #locationWrap .dayForecast.show {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg);
 }
 #location #locationWrap .dayForecast .forecastChart {
   display: none;
 }
 #location #locationWrap .dayForecast .detail {
-  border-width: 1px 0 0;
+  border-width: 0px 0 0;
 }
 #location #locationWrap .dayForecast .detail .day {
+  padding-top: 40px;
   width: 90px;
 }
+#location #locationWrap .dayForecast .detail .day.hasData:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
 #location #locationWrap .dayForecast .detail .day .pin {
+  pointer-events: none;
   width: 50px;
 }
 #location #locationWrap .dayForecast .detail .day .pin .icon {
