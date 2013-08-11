@@ -54,7 +54,7 @@ p.scrollHandler = function() {
 		this.$dayForeacastHeader.classList.add('shown');
 	} else {
 		this.$dayForeacast.classList.remove('show');
-		//this.$dayForeacastHeader.classList.remove('shown');
+		this.$dayForeacastHeader.classList.remove('shown');
 	}
 }
 
