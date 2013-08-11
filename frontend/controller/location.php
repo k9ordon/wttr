@@ -17,7 +17,7 @@ class Controller_Location extends Controller {
 
 		$this->getLocationData();
 
-		echo $this->weather['weather'][0]['icon'] . "\n";
+		echo '<!--'.$this->weather['weather'][0]['icon'] . "-->\n";
 
 		$this->weatherType = $this->config['weatherTypes'][$this->weather['weather'][0]['icon']];
 		$this->htmlClassList[] = 'type'.ucfirst($this->weatherType['class']);
@@ -45,12 +45,12 @@ class Controller_Location extends Controller {
 
 	protected function getLocationPhotoRecursive($min = 1) {
 		$photos = $this->getLocationPhotos($this->weather['name']);
-		var_dump($this->weather['name'].' found '.count($photos));
+		echo '<!--' . $this->weather['name'].' found '.count($photos) . "-->\n";
 
 		if(count($photos) >= $min) return $this->getRandomLoactionPhoto($photos, 3);
 
 		$photos = $this->getLocationPhotos($this->locationQuery);
-		var_dump($this->locationQuery.' found '.count($photos));
+		echo '<!--' . $this->locationQuery.' found '.count($photos) . "-->\n";
 		if(count($photos) >= $min) return $this->getRandomLoactionPhoto($photos, 3);
 
 		//exit;
@@ -68,7 +68,7 @@ class Controller_Location extends Controller {
 		$photos = array_slice($photos, 0, $max);
 		//var_dump($photos);exit;
 		
-		echo('possible photos' . $max);
+		echo '<!--possible photos' . $max . "-->\n";
 
 		$this->randomPhoto = $photos[array_rand($photos)];
 		//var_dump($this->randomPhoto);exit;
