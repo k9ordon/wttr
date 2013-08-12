@@ -87,7 +87,8 @@ class Model_Flickrphotos extends Model {
 				'text' => urlencode($query)		
 			))
 		);
-		echo "\n".$apiUrl."\n";
+		
+		//echo "\n".$apiUrl."\n";
 
 		$mem = $this->getMemcache();
 		$string = $mem->get($apiUrl);
