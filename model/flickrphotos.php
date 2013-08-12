@@ -17,12 +17,15 @@ class Model_Flickrphotos extends Model {
 	?method=flickr.places.find&api_key=1c3376b3342e47b9a93f57745c94483a&query=Wilhering+AT&format=rest
 */
 
-	public function __construct($placeQuery = 'Hawaii') {
-		$places = $this->loadPlace($placeQuery);
-		//var_dump($places);exit;
+	public function __construct($place = false) {
+		if(is_array($place)) {
+			$this->place = $place;
+		}
+		elseif($placeQuery !== false) {
+			$places = $this->loadPlace($placeQuery);
+			$this->place = $places['places']['place'][0];
+		}		
 
-		$this->place = $places['places']['place'][0];
-		//var_dump($this->place);
 	}
 
 	public function loadPlace($query) {
@@ -51,22 +54,40 @@ class Model_Flickrphotos extends Model {
 		return $this->place;
 	}
 
-	public function search($query, $tags, $minUploadDate = false) {
+	public function setPlace() {
+
+	}
+
+	public function search($query, $tags, $locationSearch = 'place_id', $minUploadDate = false) {
+		//var_dump($this->place);
+
+		$params = array();
+		if($locationSearch == 'place_id') {
+			$params['place_id'] = $this->place['place_id'];
+			$params['accuracy'] = 11;
+		} 
+		elseif($locationSearch == 'latlng') {
+			$params['lat'] = $this->place['latitude'];
+			$params['lon'] = $this->place['longitude'];
+			$params['radius_units'] = 'km';
+			$params['radius'] = 8;
+		}
+
 		$apiUrl = $this->apiUrl(
 			'flickr.photos.search', 
-			array(
-				//'tag_mode' => 'all', 
-				//'sort' => 'int',
+			array_merge($params, array(
+				//'extras' => 'geo',
+				//'tag_mode' => 'or', 
+				//'is_commons' => "true",
+				//'license' => '4,5,6',
 				'sort' => 'interestingness-desc', 
-				'place_id' => $this->place['place_id'], 
-				'accuracy' => 11,
 				'content_type' => 1,
 				'min_taken_date' => !$minUploadDate ? strtotime('Last Monday', strtotime('Last Month - 4 year')) : $minUploadDate,
-				'tags' => $tags,
-				'text' => $query
-			)
+				//'tags' => $tags,
+				'text' => urlencode($query)		
+			))
 		);
-		//echo '<br>'.$apiUrl.'<br>';
+		echo "\n".$apiUrl."\n";
 
 		$mem = $this->getMemcache();
 		$string = $mem->get($apiUrl);

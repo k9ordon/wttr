@@ -45,6 +45,7 @@ class Controller_Location extends Controller {
 
 	protected function getLocationPhotoRecursive($min = 1) {
 		$photos = $this->getLocationPhotos($this->weather['name']);
+
 		echo '<!--' . $this->weather['name'].' found '.count($photos) . "-->\n";
 
 		if(count($photos) >= $min) return $this->getRandomLoactionPhoto($photos, 3);
@@ -57,8 +58,11 @@ class Controller_Location extends Controller {
 	}
 
 	protected function getLocationPhotos($query) {
-		$photoApi = new Model_Flickrphotos($query);
-		$result = $photoApi->search(@$this->weatherType['flickrsearch'], @$this->weatherType['flickrtag']);
+
+        $flickrPlaceSearchObject = array('latitude'=>$this->weather['coord']['lat'], 'longitude'=>$this->weather['coord']['lon']);
+
+		$photoApi = new Model_Flickrphotos($flickrPlaceSearchObject);
+		$result = $photoApi->search(@$this->weatherType['flickrsearch'], @$this->weatherType['flickrtags'], 'latlng');
 
 		return $result['photos']['photo'];
 	}
