@@ -38,6 +38,7 @@ stage 2
 
 - [ ] location search via api
 - [ ] current location via api 
+- [ ] drag scrolling without framework
 
 stage 3
 
@@ -48,4 +49,4 @@ stage 3
 
 github - <https://github.com/k9ordon/wttr>
 
-klemens gordon - <https://github.com/k9ordon>
+klemens gordon - <https://k94n.com>
