@@ -17,7 +17,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-42261707-4', 'k94n.com');
+  ga('create', 'UA-43143945-1', 'wttr.at');
   ga('send', 'pageview');
 </script>
 
