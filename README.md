@@ -16,6 +16,16 @@ is a simple way to display the weather forecast from an api
 
 - day forecast (slides in on scroll down, scrolls time forecast to match day)
 
+## public nightly
+
+<http://preview.wttr.at>
+
+currently supporting devices fitting
+
+- display size equal to ~17" / ipad landscape 
+- current webkit chrome/safari 
+- internet
+
 ## todo
 
 stage 1
@@ -32,3 +42,10 @@ stage 2
 stage 3
 
 - [ ] implement more apis
+
+
+## links
+
+github - <https://github.com/k9ordon/wttr>
+
+klemens gordon - <https://github.com/k9ordon>
