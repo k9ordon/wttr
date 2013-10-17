@@ -16,7 +16,7 @@ is a simple way to display the weather forecast from an api
 
 - day forecast (slides in on scroll down, scrolls time forecast to match day)
 
-## public nightly
+## public dev checkout
 
 <http://preview.wttr.at>
 
