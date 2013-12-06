@@ -50,3 +50,5 @@ stage 3
 github - <https://github.com/k9ordon/wttr>
 
 klemens gordon - <https://k94n.com>
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/k9ordon/wttr/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
